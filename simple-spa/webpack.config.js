@@ -1,9 +1,10 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
 	entry: [
 		'webpack/hot/only-dev-server',
-		'./js/app.js'
+		'./js/app/index.js'
 	],
 
 	output: {
@@ -21,7 +22,10 @@ module.exports = {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				exclude: /node_modules/
+				exclude: /node_modules/,
+				query: {
+					presets: ['es2015', 'react']
+				}
 			},
 			{
 				test: /\.css$/,
