@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
 	entry: [
 		'webpack/hot/only-dev-server',
-		'./js/app/index.js'
+		'./js/app'
 	],
 
 	output: {
