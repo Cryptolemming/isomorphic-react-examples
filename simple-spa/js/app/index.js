@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Router from 'react-router';
 import { DefaultRoute, Link, Route, RouteHandler } from 'react-router';
 
-import LoginHandler from '../components/Login.jsx';
+import LoginHandler from '../components/Login.js';
 
 let App = React.createClass({
 	return() {
