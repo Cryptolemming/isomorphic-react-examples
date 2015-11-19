@@ -21,5 +21,9 @@
     "react-router": "^1.0.0",
     "webpack": "^1.12.6",
     "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "6.1.18",
+    "babel-preset-react": "6.1.18"
   }
 }
