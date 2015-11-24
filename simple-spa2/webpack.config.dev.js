@@ -17,13 +17,13 @@ module.exports = {
 		new webpack.NoErrorsPlugin()
 	],
 	resolve: {
-		extensions: ['', '.js']
+		extensions: ['', '.js', '.jsx']
 	},
 	module: {
 		loaders: [
 			{
 				test: /\.jsx?$/,
-				loaders: ['react-hot', 'babel-loader?experimental'],
+				loaders: ['react-hot', 'babel-loader'],
 				exclude: /node_modules/
 			}
 		]
