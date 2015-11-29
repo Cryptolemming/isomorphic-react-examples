@@ -111,6 +111,7 @@
         	propTypes: {
         		contacts: React.PropTypes.array.isRequired,
         		newContact: React.PropTypes.object.isRequired,
+        		onNewContactChange: React.PropTypes.func.isRequired,
         	},
 
         	render: function() {
@@ -126,28 +127,40 @@
         				React.createElement('ul', {className: 'ContactView-list'}, contactItemElements),
         				React.createElement(ContactForm, {
         					value: this.props.newContact,
-        					onChange: function(contact) { console.log(contact) },
+        					onChange: this.props.onNewContactChange,
         				})
         			)
         		)
         	},
         })
 
-        var contacts = [
-		    {key: 1, name: "James K Nelson", email: "james@jamesknelson.com", description: "Front-end Unicorn"},
-		    {key: 2, name: "Jim", email: "jim@example.com"},
-		    {key: 3, name: "Joe"},
-		];
+        var updateNewContact(contact) {
+        	setState({ newContact: contact });
+        }
 
-		var newContact = {name: '', email: '', description: ''}
-        
-        ReactDOM.render(
-        	React.createElement(ContactView, {
-        		contacts: contacts,
-        		newContact: newContact
-        	}), 
-        	document.getElementById('react-app')
-        )
+        var state = {};
+
+        function setState(changes) {
+        	Object.assign(state, changes);
+
+        	ReactDOM.render(
+        		React.createElement(ContactView,
+        			Object.assign({}, state, {
+        				onNewContactChange: updateNewContact,
+        		})),
+        		document.getElementById('react-app')
+        	);
+        }
+
+        setState({
+        	contacts: [
+			    {key: 1, name: "James K Nelson", email: "james@jamesknelson.com", description: "Front-end Unicorn"},
+			    {key: 2, name: "Jim", email: "jim@example.com"},
+			    {key: 3, name: "Joe"},
+			];
+
+			newContact: {name: '', email: '', description: ''}
+        });
         </script>
     </body>
 </html>
