@@ -88,16 +88,20 @@
         	},
 
         	render: function() {
+        		var errors = this.props.value.errors || {};
+
         		return (
         			React.createElement('form', {onSubmit: this.props.onSubmit, className: 'ContactForm', noValidate: true}, 
         				React.createElement('input', {
         					type: 'text',
+        					className: errors.name && 'ContactForm-error',
         					placeholder: 'Name',
         					value: this.props.value.name, 
         					onInput: this.onNameInput,
         				}),
         				React.createElement('input', {
         					type: 'text',
+        					className: errors.email && 'ContactForm-error',
         					placeholder: 'Email',
         					value: this.props.value.email,
         					onInput: this.onEmailInput,
@@ -153,8 +157,12 @@
        			state.newContact, {key: state.contacts.length + 1, errors: {}}
        		);
 
+       		if (!contact.name) {
+       			contact.errors.name = ['Please enter a name for the new contact'];
+       		}
+
        		if (!/.+@.+\..+/.test(contact.email)) {
-				contact.errors.email = ["Please enter your new contact's email"]
+				contact.errors.email = ["Please enter your new contact's email"];
 			}
 
        		if (contact.name && contact.email) {
