@@ -153,6 +153,10 @@
        			state.newContact, {key: state.contacts.length + 1, errors: {}}
        		);
 
+       		if (!/.+@.+\..+/.test(contact.email)) {
+				contact.errors.email = ["Please enter your new contact's email"]
+			}
+
        		if (contact.name && contact.email) {
        			setState(
        				Object.keys(contacts.errors).length === 0 ? 
