@@ -146,7 +146,15 @@
         	},
         })
 
+		/*
+		 * Constants
+		 */ 
+
         var CONTACT_TEMPLATE = {name: '', email: '', description: '', errors: null};
+
+        /*
+         * Actions
+         */
 
         function updateNewContact(contact) {
         	setState({ newContact: contact });
@@ -177,22 +185,19 @@
        		}
        	}
 
-        var state = {};
+       	function navigated() {
+       		setState({
+       			location: window.location.hash
+       		});
+       	}
 
-        function setState(changes) {
-        	Object.assign(state, changes);
+       	/*
+       	 * Model
+       	 */
 
-        	ReactDOM.render(
-        		React.createElement(ContactView,
-        			Object.assign({}, state, {
-        				onNewContactChange: updateNewContact,
-        				onNewContactSubmit: submitNewContact,
-        		})),
-        		document.getElementById('react-app')
-        	);
-        }
+       	// get initial app state
+        var state = {
 
-        setState({
         	contacts: [
 			    {key: 1, name: "James K Nelson", email: "james@jamesknelson.com", description: "Front-end Unicorn"},
 			    {key: 2, name: "Jim", email: "jim@example.com"},
@@ -200,7 +205,41 @@
 			],
 
 			newContact: Object.assign({}, CONTACT_TEMPLATE),
-        });
+
+			location: window.location.hash
+
+        };
+
+        // call to change state
+        function setState(changes) {
+        	var component;
+
+        	Object.assign(state, changes);
+
+        	switch (state.location) {
+        		case '#/contacts': component = 
+        			React.createElement(ContactView,
+	        			Object.assign({}, state, {
+	        				onNewContactChange: updateNewContact,
+	        				onNewContactSubmit: submitNewContact,
+	        		}));
+        			break;
+        		default:
+        			component = React.createElement('div', {},
+        				React.createElement('h1', {}, 'Not Found'),
+        				React.createElement('a', {href: '#/contacts'}, 'Contacts')
+        			);
+        	}
+
+        	ReactDOM.render(component,        		
+        		document.getElementById('react-app')
+        	);
+        }
+
+        window.addEventListener('hashchange', navigated, false);
+
+      	navigated();
+
         </script>
     </body>
 </html>
