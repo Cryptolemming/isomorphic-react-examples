@@ -249,13 +249,24 @@
        	}
 
        	function submitContactForm() {
-       		console.log('submit', contact);
+       		startNavigating('/contacts');
        	}
 
        	function navigated() {
-       		setState({
-       			location: window.location.hash.replace(/^#\/?|\/$/g,'').split('/')
-       		});
+       		normalizedHash = window.location.hash.replace(/^#\/?|\/$/g, '')
+
+       		if (normalizedHash === '') {
+       			startNavigating('/contacts');
+       		}
+       		else {
+       			setState({location: normalizedHash.split('/')});
+       		}
+       	}
+
+       	function startNavigating(hash) {
+       		window.location.replace(
+       			window.location.pathname + window.location.search + '#' + hash
+       		);
        	}
 
        	/*
