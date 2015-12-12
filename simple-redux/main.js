@@ -74,3 +74,32 @@ store.subscribe(function() {
 		acting = false
 	}
 })
+
+// implement renderer as the last actor in the array so it includes results of previously dispatched
+// actors in the render
+function renderer(state, dispatch) {
+	ReactDOM.render(
+		<Application state={state} dispatch={dispatch} />,
+		APP_NODE
+	)
+}
+
+// Application component example to select views
+function Application(props) {
+	const location = props.state.navigation.location;
+
+	switch (location.name) {
+		case 'documentEdit':
+			return <DocumentContainer {...props} id={location.options.id} />
+		case 'documentList':
+			return <DocumentListContainer {...props} id={location.options.id} />
+
+		default:
+			return <div>Not Found</div>
+	}
+}
+Application.propTypes = {
+	state: React.PropTypes.object.isRequired,
+	dispatch: React.PropTypes.func.isRequired,
+}
+
