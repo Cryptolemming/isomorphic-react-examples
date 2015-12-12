@@ -103,3 +103,71 @@ Application.propTypes = {
 	dispatch: React.PropTypes.func.isRequired,
 }
 
+// re-creation of the navigation action/reducer but this time considering transitions
+// 1 - add a transitioning boolean to the navigation reducer
+// 2 - skip rendering in the renderer action if transitioning is true
+// 3 - add navigationStart to begin the process
+
+// navigate to the routes defined earlier
+function navigationStart(name, options) {
+	// skip dispatching an action if already at the correct URI
+	return function(dispatch) {
+		var currentURI = window.location.hash.substr(1)
+		var newURI = ROUTES.generate(name, options)
+
+		if (currentURI !== newURI) {
+			dispatch({ type: 'NAVIGATION/START'});
+
+			window.location.replace(
+				window.location.pathname + window.location.search + '#' + newURI
+			)
+		}
+	}
+}
+
+// updated navigation reducer
+export default function navigationReducer(state = {
+	transitioning: false,
+	location: null,
+}, action) {
+	switch (action.type) {
+		case 'NAVIGATION/COMPLETE':
+			return {
+				transitioning: false,
+				location: action.location,
+			}
+
+		case 'NAVIGATION/START':
+			return {
+				transitioning: true,
+			}
+
+		default: return state
+	}
+}
+
+// updated renderer actor which considers transitioning
+export default function renderer(state, dispatch) {
+	if (!state.navigation.transitioning) {
+		ReactDOM.render(
+			<Application state={state} dispatch={dispatch} />,
+			APP_NODE
+		)
+	}
+}
+
+// redirecting - example actor function which redirects to a functioning URI
+function redirector(state, dispatch) {
+	const {name, options} = state.navigation.location || {}
+	const currentURI = window.location.hash.substr(1)
+	const canonicalURI = name && ROUTES.generate(name, options)
+
+	if (canonicalURI && canonicalURI !== currentURI) {
+		// if the URL entered differs from the canonical/standardized URL then
+		// navigate User to the canonical URL
+		dispatch(navigationStart(name, options))
+	}
+	else if (name === 'root') {
+		dispatch(navigationStart('documentList'))
+	}
+}
