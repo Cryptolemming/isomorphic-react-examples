@@ -46,3 +46,14 @@ function navigationReducer(state = {
 		default: return state
 	}
 }
+
+// example view to re-render based on the stored state
+var APP_NODE = document.getElementById('react-app');
+// wrap the view in a function which subscribes to the stored state
+store.subscribe(function() {
+	// should be code here to prevent re-render if currently navigating
+	ReactDOM.render(
+		<Application state={store.getState()} dispatch={store.dispatch} />,
+		APP_NODE
+	);
+})
