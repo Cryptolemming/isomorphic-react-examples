@@ -57,3 +57,20 @@ store.subscribe(function() {
 		APP_NODE
 	);
 })
+
+// actors are a sequence of functions called when only when stored state changes
+// and taking state object and dispatch function from the store
+var actors = [...]
+
+var acting = false;
+store.subscribe(function() {
+	// we then ensure that actions dispatched by actors do not result in a new actor
+	// being dispatched as well, allowing actors to dispatch with impunity
+	if (!acting) {
+		acting = true
+		actors.forEach(function() {
+			actor(store.getState(), store.dispatch)
+		})
+		acting = false
+	}
+})
