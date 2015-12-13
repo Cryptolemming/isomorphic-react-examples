@@ -18,7 +18,25 @@
         <script src='main.js'></script>
 
         <script>
-        	
+        	var h = React.createElement;
+
+        	var rootElement = 
+        		h('div', {},
+        			h('h1', {}, 'Posts'),
+        			h('ul', {},
+        				h('li', {},
+        					h('h2', {}, 'Title 1'),
+        					h('p', {}, 'Body 1')
+        				),
+        				h('li', {},
+        					h('h2', {}, 'Title 2'),
+        					h('p', {}, 'Body 2')
+        				)
+        			)
+        		)
+
+        	var APP_NODE = document.getElementById('main');
+        	ReactDOM.render(rootElement, APP_NODE)
         </script>
     </body>
 </html>
