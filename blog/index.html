@@ -16,30 +16,5 @@
         <script src='https://cdn.jsdelivr.net/g/react@0.14.3(react.min.js+react-dom.min.js)'></script>
 
         <script src='main.js'></script>
-
-        <script>
-        	var posts = [
-        		{key: 1, date: 1, title: 'title 1', body: 'body 1'},
-        		{key: 2, date: 2, title: 'title 2', body: 'body 2'}
-        	]
-
-        	var listElements = posts
-        		.map(function(post) {
-        			return React.createElement('li', {key: post.key},
-        				React.createElement('h2', {}, post.title),
-        				React.createElement('p', {}, post.body)
-        			)
-        		})
-
-        	var rootElement = 
-        		React.createElement('div', {},
-        			React.createElement('h1', {}, 'Posts'),
-        			React.createElement('ul', {}, listElements)
-        		)
-
-
-        	var APP_NODE = document.getElementById('main');
-        	ReactDOM.render(rootElement, APP_NODE)
-        </script>
     </body>
 </html>
