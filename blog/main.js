@@ -80,7 +80,7 @@ var PostView = React.createClass({
     return (
       React.createElement('div', {className: 'PostView'},
         React.createElement('h1', {className: 'PostView-title'}, 'Posts'),
-        React.createElement('ul', {className: 'PostView-List'}, postItemElements),
+        React.createElement('ul', {className: 'PostView-list'}, postItemElements),
         React.createElement(PostForm, {post: this.props.newPost})
       )
     )
