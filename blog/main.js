@@ -22,10 +22,10 @@ var PostItem = React.createClass({
 
   render: function() {
     return(
-      React.createElement('li', {},
-        React.createElement('h2', {}, this.props.title),
-        React.createElement('p', {}, 'date: ' + this.props.date),
-        React.createElement('p', {}, this.props.body)
+      React.createElement('li', {className: 'PostItem'},
+        React.createElement('h2', {className: 'PostItem-title'}, this.props.title),
+        React.createElement('p', {className: 'PostItem-date'}, 'date: ' + this.props.date),
+        React.createElement('p', {className: 'PostItem-body'}, this.props.body)
       )
     )
   },
@@ -38,7 +38,7 @@ var PostForm = React.createClass({
 
   render: function() {
     return (
-      React.createElement('form', {},
+      React.createElement('form', {className: 'PostForm'},
         React.createElement('input', {
           type: 'text',
           placeholder: 'title',
@@ -62,22 +62,38 @@ var PostForm = React.createClass({
   },
 })
 
+var PostView = React.createClass({
+  propTypes: {
+    posts: React.PropTypes.array.isRequired,
+    newPost: React.PropTypes.object.isRequired,
+  },
+
+  render: function() {
+    var postItemElements = this.props.posts
+      .filter(function(post) {
+        return post.date && post.title && post.body
+      })
+      .map(function(post) {
+        return React.createElement(PostItem, post)
+      })
+
+    return (
+      React.createElement('div', {className: 'PostView'},
+        React.createElement('h1', {className: 'PostView-title'}, 'Posts'),
+        React.createElement('ul', {className: 'PostView-List'}, postItemElements),
+        React.createElement(PostForm, {post: this.props.newPost})
+      )
+    )
+  }
+})
+
 /* Render */
 
-var postItemElements = posts
-  .filter(function(post) {
-    return post.date && post.title && post.body
-  })
-  .map(function(post) {
-    return React.createElement(PostItem, post)
-  })
-
-var rootElement = 
-	React.createElement('div', {},
-		React.createElement('h1', {}, 'Posts'),
-		React.createElement('ul', {}, postItemElements),
-    React.createElement(PostForm, {post: newPost})
-	)
-
 var APP_NODE = document.getElementById('main');
-ReactDOM.render(rootElement, APP_NODE)
+ReactDOM.render(
+  React.createElement(PostView, {
+    posts: posts,
+    newPost: newPost
+  }),
+  APP_NODE
+)
