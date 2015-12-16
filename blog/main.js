@@ -40,21 +40,25 @@ var PostForm = React.createClass({
     return (
       React.createElement('form', {className: 'PostForm'},
         React.createElement('input', {
+          className: 'PostForm-title',
           type: 'text',
           placeholder: 'title',
           value: this.props.post.title,
         }),
         React.createElement('input', {
+          className: 'PostForm-date',
           type: 'text',
           placeholder: 'date',
           value: this.props.post.date,
         }),
         React.createElement('textarea', {
+          className: 'PostForm-body',
           type: 'text',
           placeholder: 'body',
           value: this.props.post.body,
         }),
         React.createElement('button', {
+          className: 'PostForm-submit',
           type: 'submit',
         }, 'Add Post')
       )

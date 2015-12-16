@@ -1,13 +1,16 @@
 body {
-	
+	background: #f0f0f0;
 }
 
 #main {
-	
+}
+
+input, textarea {
+	outline: none;
 }
 
 .PostItem {
-
+	list-style-type: none;
 }
 
 .PostItem-title {
@@ -15,15 +18,32 @@ body {
 }
 
 .PostItem-date {
-
+	font-size: 15px;
+	margin-top: -15px;
 }
 
 .PostItem-body {
-
+	padding: 15px 0;
+	margin-left: 15px;
 }
 
 .PostForm {
 
+}
+
+.PostForm-title {
+	display: block;
+	margin: 15px;
+}
+
+.PostForm-date {
+ display: block;
+ margin: 15px;
+}
+
+.PostForm-body {
+	display: block;
+	margin: 15px;
 }
 
 .PostView {
