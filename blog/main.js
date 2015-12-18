@@ -36,7 +36,7 @@ var PostForm = React.createClass({
           placeholder: 'title',
           value: this.props.value.title,
           onChange: function(e) {
-            onChange(Object.assign({}, oldPost, {name: e.target.value}));
+            onChange(Object.assign({}, oldPost, {title: e.target.value}));
           },
         }),
         React.createElement('input', {
@@ -45,7 +45,7 @@ var PostForm = React.createClass({
           placeholder: 'date',
           value: this.props.value.date,
           onChange: function(e) {
-            onChange(Object.assign({}, oldPost, {name: e.target.value}));
+            onChange(Object.assign({}, oldPost, {date: e.target.value}));
           },
         }),
         React.createElement('textarea', {
@@ -54,7 +54,7 @@ var PostForm = React.createClass({
           placeholder: 'body',
           value: this.props.value.body,
           onChange: function(e) {
-            onChange(Object.assign({}, oldPost, {name: e.target.value}));
+            onChange(Object.assign({}, oldPost, {body: e.target.value}));
           },
         }),
         React.createElement('button', {
@@ -91,9 +91,9 @@ var PostView = React.createClass({
           onChange: this.props.onNewPostChange,
         })
       )
-    )
-  }
-})
+    );
+  },
+});
 
 /* Actions */
 
@@ -130,4 +130,4 @@ setState({
     title: '',
     body: ''
   }
-})
+});
