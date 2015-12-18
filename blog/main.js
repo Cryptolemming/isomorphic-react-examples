@@ -38,6 +38,9 @@ var PostForm = React.createClass({
   },
 
   render: function() {
+    var oldPost = this.props.value;
+    var onChange = this.props.onChange;
+
     return (
       React.createElement('form', {className: 'PostForm'},
         React.createElement('input', {
@@ -45,6 +48,9 @@ var PostForm = React.createClass({
           type: 'text',
           placeholder: 'title',
           value: this.props.value.title,
+          onChange: function(e) {
+            onChange(Object.assign({}, oldPost, {name: e.target.value}));
+          },
         }),
         React.createElement('input', {
           className: 'PostForm-date',
@@ -88,7 +94,7 @@ var PostView = React.createClass({
         React.createElement('ul', {className: 'PostView-list'}, postItemElements),
         React.createElement(PostForm, {
           value: this.props.newPost,
-          onChange: function(post) {console.log(post.title)},
+          onChange: function(post) {console.log(post); },
         })
       )
     )
