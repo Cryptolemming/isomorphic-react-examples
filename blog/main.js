@@ -33,7 +33,8 @@ var PostItem = React.createClass({
 
 var PostForm = React.createClass({
   propTypes: {
-    post: React.PropTypes.object.isRequired
+    value: React.PropTypes.object.isRequired,
+    onChange: React.PropTypes.func.isRequired,
   },
 
   render: function() {
@@ -43,19 +44,19 @@ var PostForm = React.createClass({
           className: 'PostForm-title',
           type: 'text',
           placeholder: 'title',
-          value: this.props.post.title,
+          value: this.props.value.title,
         }),
         React.createElement('input', {
           className: 'PostForm-date',
           type: 'text',
           placeholder: 'date',
-          value: this.props.post.date,
+          value: this.props.value.date,
         }),
         React.createElement('textarea', {
           className: 'PostForm-body',
           type: 'text',
           placeholder: 'body',
-          value: this.props.post.body,
+          value: this.props.value.body,
         }),
         React.createElement('button', {
           className: 'PostForm-submit',
@@ -85,7 +86,10 @@ var PostView = React.createClass({
       React.createElement('div', {className: 'PostView'},
         React.createElement('h1', {className: 'PostView-title'}, 'Posts'),
         React.createElement('ul', {className: 'PostView-list'}, postItemElements),
-        React.createElement(PostForm, {post: this.props.newPost})
+        React.createElement(PostForm, {
+          value: this.props.newPost,
+          onChange: function(post) {console.log(post.title)},
+        })
       )
     )
   }
