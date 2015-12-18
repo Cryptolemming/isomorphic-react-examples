@@ -57,12 +57,18 @@ var PostForm = React.createClass({
           type: 'text',
           placeholder: 'date',
           value: this.props.value.date,
+          onChange: function(e) {
+            onChange(Object.assign({}, oldPost, {name: e.target.value}));
+          },
         }),
         React.createElement('textarea', {
           className: 'PostForm-body',
           type: 'text',
           placeholder: 'body',
           value: this.props.value.body,
+          onChange: function(e) {
+            onChange(Object.assign({}, oldPost, {name: e.target.value}));
+          },
         }),
         React.createElement('button', {
           className: 'PostForm-submit',
