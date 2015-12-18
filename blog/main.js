@@ -1,16 +1,3 @@
-/* Data */
-
-var posts = [
-	{key: 1, date: '1', title: 'title 1', body: 'body 1'},
-	{key: 2, date: '2', title: 'title 2', body: 'body 2'}
-]
-
-var newPost = {
-  date: '',
-  title: '',
-  body: ''
-}
-
 /* Components */
 
 var PostItem = React.createClass({
@@ -83,6 +70,7 @@ var PostView = React.createClass({
   propTypes: {
     posts: React.PropTypes.array.isRequired,
     newPost: React.PropTypes.object.isRequired,
+    onNewPostChange: React.PropTypes.func.isRequired,
   },
 
   render: function() {
@@ -100,20 +88,46 @@ var PostView = React.createClass({
         React.createElement('ul', {className: 'PostView-list'}, postItemElements),
         React.createElement(PostForm, {
           value: this.props.newPost,
-          onChange: function(post) {console.log(post); },
+          onChange: this.props.onNewPostChange,
         })
       )
     )
   }
 })
 
-/* Render */
+/* Actions */
 
-var APP_NODE = document.getElementById('main');
-ReactDOM.render(
-  React.createElement(PostView, {
-    posts: posts,
-    newPost: newPost
-  }),
-  APP_NODE
-)
+function updateNewPost(post) {
+  setState({newPost: post});
+}
+
+/* Model */
+
+var state = {};
+
+function setState(changes) {
+  Object.assign(state, changes);
+
+  ReactDOM.render(
+    React.createElement(PostView, Object.assign({}, state, {
+      onNewPostChange: updateNewPost,
+    })),
+    document.getElementById('main')
+  );
+}
+
+/* Data */
+
+// set initial data
+setState({
+  posts: [
+    {key: 1, date: '1', title: 'title 1', body: 'body 1'},
+    {key: 2, date: '2', title: 'title 2', body: 'body 2'}
+  ],
+
+  newPost: {
+    date: '',
+    title: '',
+    body: ''
+  }
+})
