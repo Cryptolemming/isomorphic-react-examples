@@ -22,18 +22,24 @@ var PostForm = React.createClass({
   propTypes: {
     value: React.PropTypes.object.isRequired,
     onChange: React.PropTypes.func.isRequired,
+    onSubmit: React.PropTypes.func.isRequired,
   },
 
-  onTitleInput: function(e) {
+  onTitleChange: function(e) {
     this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}))
   },
 
-  onDateInput: function(e) {
+  onDateChange: function(e) {
     this.props.onChange(Object.assign({}, this.props.value, {date: e.target.value}))
   },
 
-  onBodyInput: function(e) {
+  onBodyChange: function(e) {
     this.props.onChange(Object.assign({}, this.props.value, {body: e.target.value}))
+  },
+
+  onPostSubmit: function(e) {
+    e.preventDefault();
+    this.props.onSubmit();
   },
 
   render: function() {
@@ -45,21 +51,21 @@ var PostForm = React.createClass({
           type: 'text',
           placeholder: 'title',
           value: this.props.value.title,
-          onInput: this.onTitleInput,
+          onInput: this.onTitleChange,
         }),
         React.createElement('input', {
           className: 'PostForm-date',
           type: 'text',
           placeholder: 'date',
           value: this.props.value.date,
-          onInput: this.onDateInput,
+          onInput: this.onDateChange,
         }),
         React.createElement('textarea', {
           className: 'PostForm-body',
           type: 'text',
           placeholder: 'body',
           value: this.props.value.body,
-          onInput: this.onBodyInput,
+          onInput: this.onBodyChange,
         }),
         React.createElement('button', {
           className: 'PostForm-submit',
@@ -75,6 +81,7 @@ var PostView = React.createClass({
     posts: React.PropTypes.array.isRequired,
     newPost: React.PropTypes.object.isRequired,
     onNewPostChange: React.PropTypes.func.isRequired,
+    onNewPostSubmit: React.PropTypes.func.isRequired,
   },
 
   render: function() {
@@ -93,16 +100,44 @@ var PostView = React.createClass({
         React.createElement(PostForm, {
           value: this.props.newPost,
           onChange: this.props.onNewPostChange,
+          onSubmit: this.props.onNewPostSubmit,
         })
       )
     );
   },
 });
 
+/* Constants */
+
+var POST_TEMPLATE = {
+  title: '',
+  date: '',
+  body: '',
+  errors: null,
+}
+
 /* Actions */
 
 function updateNewPost(post) {
   setState({newPost: post});
+}
+
+function submitNewPost() {
+  var post = Object.assign({},
+    state.newPost, {key: state.posts.keys + 1, errors: {}});
+
+  if (post.title && post.body) {
+    setState(
+      Object.keys(post.errors).length === 0
+        ? {
+          newPost: Object.assign({}, POST_TEMPLATE),
+          posts: state.posts.slice(0).concat(post),
+        }
+        : {
+          newPost: post
+        }
+    );
+  }
 }
 
 /* Model */
@@ -115,6 +150,7 @@ function setState(changes) {
   ReactDOM.render(
     React.createElement(PostView, Object.assign({}, state, {
       onNewPostChange: updateNewPost,
+      onNewPostSubmit: submitNewPost,
     })),
     document.getElementById('main')
   );
@@ -129,9 +165,5 @@ setState({
     {key: 2, date: '2', title: 'title 2', body: 'body 2'}
   ],
 
-  newPost: {
-    date: '',
-    title: '',
-    body: ''
-  }
+  newPost: Object.assign({}, POST_TEMPLATE),
 });
