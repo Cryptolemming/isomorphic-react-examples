@@ -26,18 +26,18 @@ var PostForm = React.createClass({
   },
 
   onTitleChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}))
+    this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}));
   },
 
   onDateChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {date: e.target.value}))
+    this.props.onChange(Object.assign({}, this.props.value, {date: e.target.value}));
   },
 
   onBodyChange: function(e) {
-    this.props.onChange(Object.assign({}, this.props.value, {body: e.target.value}))
+    this.props.onChange(Object.assign({}, this.props.value, {body: e.target.value}));
   },
 
-  onPostSubmit: function(e) {
+  onSubmit: function(e) {
     e.preventDefault();
     this.props.onSubmit();
   },
@@ -45,7 +45,7 @@ var PostForm = React.createClass({
   render: function() {
 
     return (
-      React.createElement('form', {className: 'PostForm'},
+      React.createElement('form', {className: 'PostForm', onSubmit: this.onSubmit},
         React.createElement('input', {
           className: 'PostForm-title',
           type: 'text',
@@ -124,7 +124,7 @@ function updateNewPost(post) {
 
 function submitNewPost() {
   var post = Object.assign({},
-    state.newPost, {key: state.posts.keys + 1, errors: {}});
+    state.newPost, {key: state.posts.length + 1, errors: {}});
 
   if (post.title && post.body) {
     setState(
@@ -132,10 +132,10 @@ function submitNewPost() {
         ? {
           newPost: Object.assign({}, POST_TEMPLATE),
           posts: state.posts.slice(0).concat(post),
-        }
+          }
         : {
-          newPost: post
-        }
+          newPost: post,
+          }
     );
   }
 }
