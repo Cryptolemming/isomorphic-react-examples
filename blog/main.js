@@ -43,29 +43,27 @@ var PostForm = React.createClass({
   },
 
   render: function() {
+    var errors = this.props.value.errors || {};
 
     return (
-      React.createElement('form', {className: 'PostForm', onSubmit: this.onSubmit},
+      React.createElement('form', {className: 'PostForm', onSubmit: this.onSubmit, noValidate: true},
         React.createElement('input', {
-          className: 'PostForm-title',
           type: 'text',
           placeholder: 'title',
           value: this.props.value.title,
-          onInput: this.onTitleChange,
+          onChange: this.onTitleChange,
         }),
         React.createElement('input', {
-          className: 'PostForm-date',
           type: 'text',
           placeholder: 'date',
           value: this.props.value.date,
-          onInput: this.onDateChange,
+          onChange: this.onDateChange,
         }),
         React.createElement('textarea', {
-          className: 'PostForm-body',
           type: 'text',
           placeholder: 'body',
           value: this.props.value.body,
-          onInput: this.onBodyChange,
+          onChange: this.onBodyChange,
         }),
         React.createElement('button', {
           className: 'PostForm-submit',
@@ -125,6 +123,16 @@ function updateNewPost(post) {
 function submitNewPost() {
   var post = Object.assign({},
     state.newPost, {key: state.posts.length + 1, errors: {}});
+
+  if (!post.title) {
+    post.errors.title = ['Forgot the post title'];
+  }
+  if (!post.date) {
+    post.errors.date = ['Forgot the post date'];
+  }
+  if (!post.body) {
+    post.errors.body = ['Forgot the post body'];
+  }
 
   if (post.title && post.body) {
     setState(

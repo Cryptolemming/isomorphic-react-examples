@@ -27,20 +27,12 @@ input, textarea {
 	margin-left: 15px;
 }
 
-.PostForm {
-}
-
-.PostForm-title {
+.PostForm > input {
 	display: block;
 	margin: 15px;
 }
 
-.PostForm-date {
- display: block;
- margin: 15px;
-}
-
-.PostForm-body {
+.PostForm > textarea {
 	display: block;
 	margin: 15px;
 }
