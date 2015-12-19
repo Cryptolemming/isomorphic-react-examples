@@ -24,9 +24,19 @@ var PostForm = React.createClass({
     onChange: React.PropTypes.func.isRequired,
   },
 
+  onTitleInput: function(e) {
+    this.props.onChange(Object.assign({}, this.props.value, {title: e.target.value}))
+  },
+
+  onDateInput: function(e) {
+    this.props.onChange(Object.assign({}, this.props.value, {date: e.target.value}))
+  },
+
+  onBodyInput: function(e) {
+    this.props.onChange(Object.assign({}, this.props.value, {body: e.target.value}))
+  },
+
   render: function() {
-    var oldPost = this.props.value;
-    var onChange = this.props.onChange;
 
     return (
       React.createElement('form', {className: 'PostForm'},
@@ -35,27 +45,21 @@ var PostForm = React.createClass({
           type: 'text',
           placeholder: 'title',
           value: this.props.value.title,
-          onChange: function(e) {
-            onChange(Object.assign({}, oldPost, {title: e.target.value}));
-          },
+          onInput: this.onTitleInput,
         }),
         React.createElement('input', {
           className: 'PostForm-date',
           type: 'text',
           placeholder: 'date',
           value: this.props.value.date,
-          onChange: function(e) {
-            onChange(Object.assign({}, oldPost, {date: e.target.value}));
-          },
+          onInput: this.onDateInput,
         }),
         React.createElement('textarea', {
           className: 'PostForm-body',
           type: 'text',
           placeholder: 'body',
           value: this.props.value.body,
-          onChange: function(e) {
-            onChange(Object.assign({}, oldPost, {body: e.target.value}));
-          },
+          onInput: this.onBodyInput,
         }),
         React.createElement('button', {
           className: 'PostForm-submit',
