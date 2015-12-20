@@ -42,6 +42,20 @@ var PostForm = React.createClass({
     this.props.onSubmit();
   },
 
+  componentDidUpdate: function(prevProps) {
+    var value = this.props.value;
+    var prevValue = prevProps.value;
+
+    if (this.isMounted && value.errors && value.errors !== prevValue.errors) {
+      if (value.errors.title) {
+        this.refs.title.focus();
+      }
+      else if (value.errors.body) {
+        this.refs.body.focus();
+      }
+    }
+  },
+
   render: function() {
     var errors = this.props.value.errors || {};
 
@@ -52,18 +66,22 @@ var PostForm = React.createClass({
           placeholder: 'title',
           value: this.props.value.title,
           onChange: this.onTitleChange,
+          ref: 'title',
+          autoFocus: true,
         }),
         React.createElement('input', {
           type: 'text',
           placeholder: 'date',
           value: this.props.value.date,
           onChange: this.onDateChange,
+
         }),
         React.createElement('textarea', {
           type: 'text',
           placeholder: 'body',
           value: this.props.value.body,
           onChange: this.onBodyChange,
+          ref: 'body',
         }),
         React.createElement('button', {
           className: 'PostForm-submit',
@@ -127,25 +145,20 @@ function submitNewPost() {
   if (!post.title) {
     post.errors.title = ['Forgot the post title'];
   }
-  if (!post.date) {
-    post.errors.date = ['Forgot the post date'];
-  }
   if (!post.body) {
     post.errors.body = ['Forgot the post body'];
   }
 
-  if (post.title && post.body) {
-    setState(
-      Object.keys(post.errors).length === 0
-        ? {
-          newPost: Object.assign({}, POST_TEMPLATE),
-          posts: state.posts.slice(0).concat(post),
-          }
-        : {
-          newPost: post,
-          }
-    );
-  }
+  setState(
+    Object.keys(post.errors).length === 0
+      ? {
+        newPost: Object.assign({}, POST_TEMPLATE),
+        posts: state.posts.slice(0).concat(post),
+        }
+      : {
+        newPost: post,
+        }
+  );
 }
 
 /* Model */
