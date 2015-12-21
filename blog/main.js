@@ -39,6 +39,7 @@ var PostForm = React.createClass({
 
   onSubmit: function(e) {
     e.preventDefault();
+    this.refs.title.focus();
     this.props.onSubmit();
   },
 
