@@ -1,3 +1,6 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
 var Books = React.createClass({
 	propTypes: {
 		books: React.PropTypes.array.isRequired,
@@ -27,7 +30,5 @@ var data = [
 
 ReactDOM.render(
 	React.createElement(Books, {
-		books: data
-	}),
-	document.getElementById('index')
-);
+		books: data}),
+	document.getElementById('main'));
