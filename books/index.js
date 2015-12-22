@@ -1,5 +1,18 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+var Book = React.createClass({
+	propTypes: {
+		title: React.PropTypes.string.isRequired,
+		author: React.PropTypes.string.isRequired,
+	},
+
+	render: function() {
+		return(
+			React.createElement('li', {},
+				React.createElement('h2', {}, this.props.title),
+				React.createElement('p', {}, this.props.author)
+			)
+		)
+	}
+})
 
 var Books = React.createClass({
 	propTypes: {
@@ -9,14 +22,13 @@ var Books = React.createClass({
 	render: function() {
 		var bookElements = this.props.books
 			.map(function(book) {
-				React.createElement('li', {},
-					React.createElement('h2', {}, book.title),
-					React.createElement('p', {}, book.author)
-				)
+				return React.createElement(Book, book)
 			});
+		
 
 		return (
 			React.createElement('div', {}, 
+				React.createElement('h1', {}, 'Books'),
 				React.createElement('ul', {}, bookElements)
 			)
 		);
