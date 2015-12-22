@@ -189,3 +189,26 @@ setState({
 
   newPost: Object.assign({}, POST_TEMPLATE),
 });
+
+/* Navigation */
+// action called when browser navigates
+function navigationComplete() {
+  return {
+    type: 'NAVIGATION/COMPLETE',
+    location: ROUTES.lookup(window.location.hash.substr(1)),
+  }
+}
+
+function navigationReducer(state = {
+  location: null,
+}, action) {
+  switch (action.type) {
+    case 'NAVIGATION/COMPLETE':
+      return {
+        location: action.location,
+      }
+
+    default:
+      return state
+  }
+}
