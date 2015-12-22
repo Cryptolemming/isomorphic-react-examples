@@ -199,6 +199,7 @@ function navigationComplete() {
   }
 }
 
+// reducer for navigation action
 function navigationReducer(state = {
   location: null,
 }, action) {
