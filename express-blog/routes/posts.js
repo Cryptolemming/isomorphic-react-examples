@@ -9,7 +9,8 @@ var posts = {
 }
 
 router.get('/', function(req, res) {
-	res.json({data: posts});
+	res.send(posts);
+
 });
 
 module.exports = router;
