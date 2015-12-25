@@ -49,11 +49,58 @@
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	document.write('it works');
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(3);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) {
+		return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	var Posts = _react2.default.createClass({
+		displayName: 'Posts',
+
+		getInitialState: function getInitialState() {
+			return {
+				posts: []
+			};
+		},
+
+		componentDidMount: function componentDidMount() {
+			request('http://localhost:3000/posts', function (error, response, body) {
+				var result = JSON.parse(body);
+				if (this.isMounted()) {
+					this.setState({ posts: result.posts });
+				}
+			});
+		},
+
+		render: function render() {
+			return _react2.default.createElement('div', {}, this.state.posts);
+		}
+	});
+
+	_reactDom2.default.render(_react2.default.createElement(Posts, {}), document.getElementById('main'));
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = require("react");
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-dom");
 
 /***/ }
 /******/ ]);
