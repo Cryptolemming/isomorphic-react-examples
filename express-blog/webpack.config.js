@@ -13,7 +13,7 @@ fs.readdirSync('node_modules')
 
 module.exports = {
 	entry: [
-		'./public/javascripts/mounttest.js'
+		'./public/javascripts/Components/mounttest.js'
 	],
 	target: 'node',
 	output: {

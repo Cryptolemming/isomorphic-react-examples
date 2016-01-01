@@ -10,7 +10,6 @@ var posts = {
 
 router.get('/', function(req, res) {
 	res.send(posts);
-
 });
 
 module.exports = router;
