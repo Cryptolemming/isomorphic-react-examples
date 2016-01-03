@@ -25,7 +25,7 @@ var Posts = React.createClass({
 			.map(function(project) {
 				return React.createElement('li', {},
 					React.createElement('h2', {}, project.name),
-					React.createElement('img', {src: project.picture}),
+					React.createElement('img', {src: project.picture, width: '250px'}),
 					React.createElement('ul', {}, project.languages.map(function(language) {
 						return React.createElement('li', {}, language)
 					})),
