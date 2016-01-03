@@ -3,9 +3,15 @@
 var Main = React.createClass({
 
 	render: function() {
-		return (
+		var navElements
 
-		)
+		return (
+			React.createElement('div', {}, 
+				React.createElement('ul', {},
+					React.createElement('li', {}, window.location.href)
+				)
+			)
+		);
 	}
 });
 
