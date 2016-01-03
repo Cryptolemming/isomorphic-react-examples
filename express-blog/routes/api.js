@@ -19,9 +19,11 @@ var music = {
 
 var projects = {
 	data: [
-		{key: 1, date: '1', name: 'project 1', picture: 'picture 1',
+		{key: 1, date: '1', name: 'project 1',
+			picture: 'http://www.cupecoybeachclub.com/wp-content/uploads/2012/07/Cupecoy-Beach-Background.jpg',
 			languages: ['language 1', 'language 2'], summary: 'summary 1'},
-		{key: 2, date: '2', name: 'project 2', picture: 'picture 2',
+		{key: 2, date: '2', name: 'project 2',
+			picture: 'https://s3.amazonaws.com/rapgenius/tumblr_m2mbniLKtl1rn0y7so1_500.gif',
 			languages: ['language 1', 'language 2'], summary: 'summary 2'},
 	]
 }

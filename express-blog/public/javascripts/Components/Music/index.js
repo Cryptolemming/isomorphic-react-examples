@@ -15,7 +15,7 @@ var Posts = React.createClass({
 		$.get(this.props.source, function(result) {
 			var musicItems = result.data;
 			if (this.isMounted()) {
-				this.setState({posts: musicItems});
+				this.setState({music: musicItems});
 			}
 		}.bind(this));
 	},
@@ -24,8 +24,7 @@ var Posts = React.createClass({
 		var musicItemElements = this.state.music
 			.map(function(song) {
 				return React.createElement('li', {},
-					React.createElement('h2', {}, song.title),
-					React.createElement('h3', {}, song.artist),
+					React.createElement('h2', {}, song.artist + ': ' + song.title),
 					React.createElement('p', {}, song.date),
 					React.createElement('iframe', {src: song.link})
 				)
