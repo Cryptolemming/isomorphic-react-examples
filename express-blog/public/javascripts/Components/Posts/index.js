@@ -1,6 +1,10 @@
 'use strict';
 
 var Posts = React.createClass({
+	propTypes: {
+		source: React.PropTypes.string.isRequired,
+	},
+
 	getInitialState: function() {
 		return {
 			posts: []
@@ -9,7 +13,7 @@ var Posts = React.createClass({
 
 	componentDidMount: function() {
 		$.get(this.props.source, function(result) {
-			var posts = result.posts;
+			var posts = result.data;
 			if (this.isMounted()) {
 				this.setState({posts: posts});
 			}
