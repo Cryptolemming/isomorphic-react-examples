@@ -1,3 +1,4 @@
+'use strict';
 
 var Posts = React.createClass({
 	getInitialState: function() {
@@ -33,6 +34,6 @@ var Posts = React.createClass({
 });
 
 ReactDOM.render(
-	React.createElement(Posts, {source: 'http://localhost:3000/posts'}),
+	React.createElement(Posts, {source: 'http://localhost:3000/api/posts'}),
 	document.getElementById('main')
 );

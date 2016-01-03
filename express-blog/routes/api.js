@@ -8,8 +8,8 @@ var posts = {
 	]
 }
 
-router.get('/', function(req, res) {
-	res.render('posts');
+router.get('/posts', function(req, res) {
+	res.send(posts);
 });
 
 module.exports = router;
