@@ -13,9 +13,9 @@ var Posts = React.createClass({
 
 	componentDidMount: function() {
 		$.get(this.props.source, function(result) {
-			var posts = result.data;
+			var postItems = result.data;
 			if (this.isMounted()) {
-				this.setState({posts: posts});
+				this.setState({posts: postItems});
 			}
 		}.bind(this));
 	},
@@ -39,5 +39,5 @@ var Posts = React.createClass({
 
 ReactDOM.render(
 	React.createElement(Posts, {source: 'http://localhost:3000/api/posts'}),
-	document.getElementById('main')
+	document.getElementById('posts')
 );

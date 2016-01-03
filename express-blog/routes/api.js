@@ -10,8 +10,10 @@ var posts = {
 
 var music = {
 	data: [
-		{key: 1, date: '1', artist: 'artist 1', title: 'title 1'},
-		{key: 2, date: '2', artist: 'artist 2', title: 'title 2'}
+		{key: 1, date: '1', artist: 'artist 1', title: 'title 1',
+			link: 'https://www.youtube.com/embed/wfd6eNx8Sxk?autoplay=1'},
+		{key: 2, date: '2', artist: 'artist 2', title: 'title 2',
+			link: ''}
 	]
 }
 
