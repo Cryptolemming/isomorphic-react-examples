@@ -3,7 +3,7 @@
 var Main = React.createClass({
 
 	render: function() {
-		var navElements
+		
 
 		return (
 			React.createElement('div', {}, 
