@@ -16,9 +16,8 @@ var index = require('./routes/index');
 
 var app = express();
 
-var swig = new swig.Swig();
-
 // view engine setup
+var swig = new swig.Swig();
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -69,6 +68,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

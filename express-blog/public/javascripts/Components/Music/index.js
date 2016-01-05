@@ -23,7 +23,7 @@ var Posts = React.createClass({
 	render: function() {
 		var musicItemElements = this.state.music
 			.map(function(song) {
-				return React.createElement('li', {},
+				return React.createElement('li', {key: song.key},
 					React.createElement('h2', {}, song.artist + ': ' + song.title),
 					React.createElement('p', {}, song.date),
 					React.createElement('iframe', {src: song.link})
