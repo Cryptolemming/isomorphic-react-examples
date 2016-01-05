@@ -20,25 +20,20 @@ var Posts = React.createClass({
 		}.bind(this));
 	},
 
-	styles: function() {
-		return {
-			background: 'blue',
-		};
-	},
-
 	render: function() {
-		var styles = this.styles;
-
 		var postItemElements = this.state.posts
 			.map(function(post) {
-				return React.createElement('li', {key: post.key},
+				return React.createElement('li', {
+						key: post.key,
+						style: {listStyleType: 'none'}},
 					React.createElement('h2', {}, post.title),
-					React.createElement('p', {}, post.body)
+					React.createElement('h5', {style: {marginBottom: '25px'}}, post.date),
+					React.createElement('p', {style: {marginLeft: '5px', marginBottom: '50px'}}, post.body)
 				)
 			});
 
 		return(
-			React.createElement('div', {style: {styles}},
+			React.createElement('div', {},
 				React.createElement('ul', {}, postItemElements)
 			)
 		)
@@ -49,3 +44,4 @@ ReactDOM.render(
 	React.createElement(Posts, {source: 'http://localhost:3000/api/posts'}),
 	document.getElementById('posts')
 );
+

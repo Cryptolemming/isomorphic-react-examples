@@ -1,11 +1,9 @@
 'use strict';
 
-/*
+
 var Main = React.createClass({
 
 	render: function() {
-		
-
 		return (
 			React.createElement('div', {}, 
 				React.createElement('ul', {},
@@ -20,4 +18,3 @@ ReactDOM.render(
 	React.createElement(Main),
 	document.getElementById('main')
 );
-*/

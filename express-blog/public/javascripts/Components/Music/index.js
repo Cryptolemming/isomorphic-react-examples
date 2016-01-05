@@ -1,6 +1,6 @@
 'use strict';
 
-var Posts = React.createClass({
+var Music = React.createClass({
 	propTypes: {
 		source: React.PropTypes.string.isRequired,
 	},
@@ -23,10 +23,12 @@ var Posts = React.createClass({
 	render: function() {
 		var musicItemElements = this.state.music
 			.map(function(song) {
-				return React.createElement('li', {key: song.key},
+				return React.createElement('li', {
+						key: song.key,
+						style: {listStyleType: 'none'}},
 					React.createElement('h2', {}, song.artist + ': ' + song.title),
-					React.createElement('p', {}, song.date),
-					React.createElement('iframe', {src: song.link})
+					React.createElement('h5', {style: {marginBottom: '25px'}}, song.date),
+					React.createElement('iframe', {src: song.link, style: {marginLeft: '5px', marginBottom: '50px'}})
 				)
 			});
 
@@ -39,6 +41,6 @@ var Posts = React.createClass({
 });
 
 ReactDOM.render(
-	React.createElement(Posts, {source: 'http://localhost:3000/api/music'}),
+	React.createElement(Music, {source: 'http://localhost:3000/api/music'}),
 	document.getElementById('music')
 );

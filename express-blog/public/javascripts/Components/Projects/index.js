@@ -1,6 +1,6 @@
 'use strict';
 
-var Posts = React.createClass({
+var Projects = React.createClass({
 	propTypes: {
 		source: React.PropTypes.string.isRequired,
 	},
@@ -23,13 +23,23 @@ var Posts = React.createClass({
 	render: function() {
 		var projectItemElements = this.state.projects
 			.map(function(project) {
-				return React.createElement('li', {key: project.key},
+				return React.createElement('li', {
+						key: project.key,
+						style: {listStyleType: 'none'}},
 					React.createElement('h2', {}, project.name),
-					React.createElement('img', {src: project.picture, width: '250px'}),
+					React.createElement('h5', {style: {marginBottom: '15px'}}, project.date),
+					React.createElement('img', {src: project.picture, style: {width: '250px', marginBottom: '15px', marginLeft: '5px'}}),
 					React.createElement('ul', {}, project.languages.map(function(language) {
-						return React.createElement('li', {}, language)
+						return React.createElement('li', {
+							style: {
+								listStyleType: 'none',
+								display: 'inline',
+								paddingRight: '5px',
+								opacity: '.8',
+								fontSize: '12px',
+							}}, language)
 					})),
-					React.createElement('p', {}, project.summary)
+					React.createElement('p', {style: {marginLeft: '5px', marginBottom: '50px'}}, project.summary)
 				)
 			});
 
@@ -42,6 +52,6 @@ var Posts = React.createClass({
 });
 
 ReactDOM.render(
-	React.createElement(Posts, {source: 'http://localhost:3000/api/projects'}),
+	React.createElement(Projects, {source: 'http://localhost:3000/api/projects'}),
 	document.getElementById('projects')
 );

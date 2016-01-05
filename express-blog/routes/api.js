@@ -11,9 +11,9 @@ var posts = {
 var music = {
 	data: [
 		{key: 1, date: '1', artist: 'artist 1', title: 'title 1',
-			link: 'https://www.youtube.com/embed/wfd6eNx8Sxk?autoplay=1'},
+			link: 'https://www.youtube.com/embed/wfd6eNx8Sxk?autoplay=0'},
 		{key: 2, date: '2', artist: 'artist 2', title: 'title 2',
-			link: ''}
+			link: 'https://www.youtube.com/embed/wfd6eNx8Sxk?autoplay=0'}
 	]
 }
 
@@ -27,6 +27,11 @@ var projects = {
 			languages: ['language 1', 'language 2'], summary: 'summary 2'},
 	]
 }
+
+var postsData = posts.data;
+var musicData = music.data;
+var projectsData = projects.data;
+var home = postsData.concat(musicData, projectsData);
 
 router
 	// Posts API
@@ -42,6 +47,11 @@ router
 	// Project API
 	.get('/projects', function(req, res) {
 		res.send(projects);
+	})
+
+	// Home API
+	.get('/home', function(req, res) {
+		res.send(home);
 	});
 
 module.exports = router;
