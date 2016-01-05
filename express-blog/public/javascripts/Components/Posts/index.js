@@ -20,6 +20,12 @@ var Posts = React.createClass({
 		}.bind(this));
 	},
 
+	styles: function() {
+		return {
+			background: 'blue',
+		};
+	},
+
 	render: function() {
 		var postItemElements = this.state.posts
 			.map(function(post) {
@@ -30,7 +36,7 @@ var Posts = React.createClass({
 			});
 
 		return(
-			React.createElement('div', {},
+			React.createElement('div', {style: this.styles},
 				React.createElement('ul', {}, postItemElements)
 			)
 		)
