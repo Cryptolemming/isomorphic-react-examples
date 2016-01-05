@@ -6,7 +6,7 @@ and filter for newest entries */
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {title: 'Index'});
+  res.render('index');
 });
 
 module.exports = router;
