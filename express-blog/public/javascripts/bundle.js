@@ -53,20 +53,17 @@
 
 	'use strict';
 
-	var _react = __webpack_require__(2);
+	var React = __webpack_require__(2);
+	var ReactDOM = __webpack_require__(3);
 
-	var _react2 = _interopRequireDefault(_react);
+	'use strict';
 
-	var _reactDom = __webpack_require__(3);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	var Posts = _react2.default.createClass({
+	var Posts = React.createClass({
 		displayName: 'Posts',
+
+		propTypes: {
+			source: React.PropTypes.string.isRequired
+		},
 
 		getInitialState: function getInitialState() {
 			return {
@@ -75,20 +72,30 @@
 		},
 
 		componentDidMount: function componentDidMount() {
-			request('http://localhost:3000/posts', function (error, response, body) {
-				var result = JSON.parse(body);
+			$.get(this.props.source, (function (result) {
+				var postItems = result.data;
 				if (this.isMounted()) {
-					this.setState({ posts: result.posts });
+					this.setState({ posts: postItems });
 				}
-			});
+			}).bind(this));
+		},
+
+		styles: function styles() {
+			return {
+				background: 'blue'
+			};
 		},
 
 		render: function render() {
-			return _react2.default.createElement('div', {}, this.state.posts);
+			var postItemElements = this.state.posts.map(function (post) {
+				return React.createElement('li', {}, React.createElement('h2', {}, post.title), React.createElement('p', {}, post.body));
+			});
+
+			return React.createElement('div', { style: this.styles }, React.createElement('ul', {}, postItemElements));
 		}
 	});
 
-	_reactDom2.default.render(_react2.default.createElement(Posts, {}), document.getElementById('main'));
+	ReactDOM.render(React.createElement(Posts, { source: 'http://localhost:3000/api/posts' }), document.getElementById('posts'));
 
 /***/ },
 /* 2 */

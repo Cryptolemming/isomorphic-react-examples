@@ -1,6 +1,7 @@
-extends layout
+{% extends layout %}
 
-block content
-  div#music
+{% block content %}
+  <div id='music'></div>
 
-  script(src='/javascripts/Components/Music/index.js')
+  <script src='/javascripts/Components/Music/index.js'></script>
+ {% end block %}

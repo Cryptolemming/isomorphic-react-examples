@@ -1,6 +1,7 @@
-extends layout
+{% extends 'layout.html' %}
 
-block content
-  div#about
+{% block content %}
+  <div id='about'></div>
 
-  script(src='/javascripts/Components/About/index.js')
+  <script src='/javascripts/Components/About/index.js'></script>
+{% end block %}

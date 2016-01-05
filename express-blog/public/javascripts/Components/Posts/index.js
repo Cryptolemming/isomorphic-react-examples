@@ -27,16 +27,18 @@ var Posts = React.createClass({
 	},
 
 	render: function() {
+		var styles = this.styles;
+
 		var postItemElements = this.state.posts
 			.map(function(post) {
-				return React.createElement('li', {},
+				return React.createElement('li', {key: post.key},
 					React.createElement('h2', {}, post.title),
 					React.createElement('p', {}, post.body)
 				)
 			});
 
 		return(
-			React.createElement('div', {style: this.styles},
+			React.createElement('div', {style: {styles}},
 				React.createElement('ul', {}, postItemElements)
 			)
 		)
