@@ -28,10 +28,20 @@ var projects = {
 	]
 }
 
+// function to compare the dates of entries for sorting
+function compareDates(a, b) {
+	if (a.date < b.date)
+		return -1;
+	else if (a.date > b.date)
+		return 1;
+	else
+		return 0;
+}
+
 var postsData = posts.data;
 var musicData = music.data;
 var projectsData = projects.data;
-var home = postsData.concat(musicData, projectsData);
+var home = postsData.concat(musicData, projectsData).sort(compareDates).slice(0,4);
 
 router
 	// Posts API
