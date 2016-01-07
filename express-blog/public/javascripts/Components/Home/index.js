@@ -16,13 +16,14 @@ var Home = React.createClass({
 	},
 
 	render: function() {
-		return (
-			React.createElement('div', {}, state.home)			)
+		return(
+			React.createElement('div', {}, this.state.home)
 		)
+		
 	}
 });
 
 ReactDOM.render(
-	React.createElement(Home, {src: 'https://localhost:3000/api/home'}),
+	React.createElement(Home, {source: 'https://localhost:3000/api/home'}),
 	document.getElementById('home')
 );

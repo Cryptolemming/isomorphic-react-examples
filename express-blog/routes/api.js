@@ -61,7 +61,7 @@ router
 
 	// Home API
 	.get('/home', function(req, res) {
-		res.send(home);
+		res.send(posts);
 	});
 
 module.exports = router;

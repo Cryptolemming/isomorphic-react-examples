@@ -5,7 +5,7 @@ var router = express.Router();
 and filter for newest entries */
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index');
 });
 
