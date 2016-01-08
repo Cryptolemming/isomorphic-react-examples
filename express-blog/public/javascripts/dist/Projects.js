@@ -69,9 +69,9 @@
 		},
 
 		render: function render() {
-			var projectItemElements = this.state.projects.map(function (project) {
+			var projectItemElements = this.state.projects.map(function (project, index) {
 				return React.createElement('li', {
-					key: project.key,
+					key: inex,
 					style: { listStyleType: 'none' } }, React.createElement('h2', {}, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, project.date), React.createElement('img', { src: project.picture, style: { width: '250px', marginBottom: '15px', marginLeft: '5px' } }), React.createElement('ul', {}, project.languages.map(function (language) {
 					return React.createElement('li', {
 						style: {

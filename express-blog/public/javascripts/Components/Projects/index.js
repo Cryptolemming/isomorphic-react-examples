@@ -22,9 +22,9 @@ var Projects = React.createClass({
 
 	render: function() {
 		var projectItemElements = this.state.projects
-			.map(function(project) {
+			.map(function(project, index) {
 				return React.createElement('li', {
-						key: project.key,
+						key: inex,
 						style: {listStyleType: 'none'}},
 					React.createElement('h2', {}, project.name),
 					React.createElement('h5', {style: {marginBottom: '15px'}}, project.date),

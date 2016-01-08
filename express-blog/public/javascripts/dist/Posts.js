@@ -69,9 +69,9 @@
 		},
 
 		render: function render() {
-			var postItemElements = this.state.posts.map(function (post) {
+			var postItemElements = this.state.posts.map(function (post, index) {
 				return React.createElement('li', {
-					key: post.key,
+					key: index,
 					style: { listStyleType: 'none' } }, React.createElement('h1', { style: { marginTop: '50px' } }, post.title), React.createElement('h4', { style: { marginBottom: '25px' } }, post.date), React.createElement('p', { style: { marginLeft: '5px' } }, post.body));
 			});
 

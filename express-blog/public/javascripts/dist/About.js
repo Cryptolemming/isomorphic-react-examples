@@ -42,19 +42,12 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(1);
-
-
-/***/ },
-/* 1 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	var Music = React.createClass({
-		displayName: 'Music',
+	var About = React.createClass({
+		displayName: 'About',
 
 		propTypes: {
 			source: React.PropTypes.string.isRequired
@@ -62,7 +55,7 @@
 
 		getInitialState: function getInitialState() {
 			return {
-				music: []
+				about: {}
 			};
 		},
 
@@ -76,19 +69,12 @@
 		},
 
 		render: function render() {
-			var musicItemElements = this.state.music.map(function (song, index) {
-				return React.createElement('li', {
-					key: index,
-					style: { listStyleType: 'none' } }, React.createElement('h2', {}, song.artist + ': ' + song.title), React.createElement('h5', { style: { marginBottom: '25px' } }, song.date), React.createElement('iframe', { src: song.link, style: { marginLeft: '5px', marginBottom: '50px' } }));
-			});
 
-			return React.createElement('div', {}, React.createElement('ul', {}, musicItemElements));
+			return React.createElement('div', {}, React.createElement('ul', {}));
 		}
 	});
 
-	ReactDOM.render(React.createElement(Music, { source: 'http://localhost:3000/api/music' }), document.getElementById('music'));
-
-	module.exports = Music;
+	ReactDOM.render(React.createElement(About, { source: 'http://localhost:3000/api/about' }), document.getElementById('about'));
 
 /***/ }
 /******/ ]);

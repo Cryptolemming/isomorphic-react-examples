@@ -22,9 +22,9 @@ var Music = React.createClass({
 
 	render: function() {
 		var musicItemElements = this.state.music
-			.map(function(song) {
+			.map(function(song, index) {
 				return React.createElement('li', {
-						key: song.key,
+						key: index,
 						style: {listStyleType: 'none'}},
 					React.createElement('h2', {}, song.artist + ': ' + song.title),
 					React.createElement('h5', {style: {marginBottom: '25px'}}, song.date),
@@ -44,3 +44,5 @@ ReactDOM.render(
 	React.createElement(Music, {source: 'http://localhost:3000/api/music'}),
 	document.getElementById('music')
 );
+
+module.exports = Music;

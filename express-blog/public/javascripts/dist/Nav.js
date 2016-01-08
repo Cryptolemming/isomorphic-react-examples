@@ -42,53 +42,48 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(1);
-
-
-/***/ },
-/* 1 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	var Music = React.createClass({
-		displayName: 'Music',
-
-		propTypes: {
-			source: React.PropTypes.string.isRequired
-		},
+	var Nav = React.createClass({
+		displayName: 'Nav',
 
 		getInitialState: function getInitialState() {
 			return {
-				music: []
+				navItems: {
+					'home': true,
+					'posts': false,
+					'music': false,
+					'projects': false,
+					'about': false
+				}
 			};
 		},
 
-		componentDidMount: function componentDidMount() {
-			$.get(this.props.source, (function (result) {
-				var musicItems = result.data;
-				if (this.isMounted()) {
-					this.setState({ music: musicItems });
-				}
-			}).bind(this));
+		_onNavChange: function _onNavChange() {
+			// when nav changes map over navItems to set address to true
+			// there can only be one true
+			// then change state
 		},
 
 		render: function render() {
-			var musicItemElements = this.state.music.map(function (song, index) {
-				return React.createElement('li', {
-					key: index,
-					style: { listStyleType: 'none' } }, React.createElement('h2', {}, song.artist + ': ' + song.title), React.createElement('h5', { style: { marginBottom: '25px' } }, song.date), React.createElement('iframe', { src: song.link, style: { marginLeft: '5px', marginBottom: '50px' } }));
+			var navObject = this.state.navItems;
+			// map over state navItems and create the nav ul
+			var navItemElements = Object.keys(navObject).map(function (value, index) {
+				return React.createElement('li', { key: index,
+					style: {
+						listStyleType: 'none',
+						display: 'inline',
+						marginRight: '5px'
+					} }, React.createElement('a', { href: 'http://localhost:3000/' + value }, value));
 			});
 
-			return React.createElement('div', {}, React.createElement('ul', {}, musicItemElements));
+			return React.createElement('div', { style: { marginLeft: '75px' } }, React.createElement('ul', {}, navItemElements));
 		}
 	});
 
-	ReactDOM.render(React.createElement(Music, { source: 'http://localhost:3000/api/music' }), document.getElementById('music'));
-
-	module.exports = Music;
+	ReactDOM.render(React.createElement(Nav, {}), document.getElementById('nav'));
 
 /***/ }
 /******/ ]);

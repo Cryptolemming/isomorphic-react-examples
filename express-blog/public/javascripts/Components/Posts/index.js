@@ -22,9 +22,9 @@ var Posts = React.createClass({
 
 	render: function() {
 		var postItemElements = this.state.posts
-			.map(function(post) {
+			.map(function(post, index) {
 				return React.createElement('li', {
-						key: post.key,
+						key: index,
 						style: {listStyleType: 'none'}},
 					React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
 					React.createElement('h4', {style: {marginBottom: '25px'}}, post.date),

@@ -1,6 +1,6 @@
 'use strict';
 
-var Posts = React.createClass({
+var About = React.createClass({
 	propTypes: {
 		source: React.PropTypes.string.isRequired,
 	},
@@ -24,13 +24,13 @@ var Posts = React.createClass({
 		
 		return(
 			React.createElement('div', {},
-				React.createElement('ul', {},)
+				React.createElement('ul', {})
 			)
 		)
 	}
 });
 
 ReactDOM.render(
-	React.createElement(Posts, {source: 'http://localhost:3000/api/about'}),
+	React.createElement(About, {source: 'http://localhost:3000/api/about'}),
 	document.getElementById('about')
 );
