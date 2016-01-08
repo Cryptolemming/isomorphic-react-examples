@@ -1,18 +1,27 @@
 var webpack = require('webpack');
 var path = require('path');
+var fs = require('fs');
+
+var nodeModules = {};
+fs.readdirSync('node_modules')
+  .filter(function(x) {
+    return ['.bin'].indexOf(x) === -1;
+  })
+  .forEach(function(mod) {
+    nodeModules[mod] = 'commonjs ' + mod;
+  });
 
 module.exports = {
-	entry: {
-		Posts: './public/javascripts/Components/Posts/index.js',
-		Music: './public/javascripts/Components/Music/index.js',
-		Projects: './public/javascripts/Components/Projects/index.js',
-		About: './public/javascripts/Components/About/index.js',
-		Home: './public/javascripts/Components/Home/index.js',
-	},
+	entry: [
+		'./public/javascripts/Components/Posts/index.js'
+	],
+	target: 'node',
 	output: {
-		path: './public/javascripts/dist',
-		filename: '[name].js',
+		path: path.join(__dirname, '/public/javascripts/'),
+		filename: 'bundle.js'
 	},
+	externals: nodeModules,
+
 	module: {
 		loaders: [
 			{ 
@@ -37,4 +46,7 @@ module.exports = {
 			}
 		]
 	},
+	plugins: [
+		new webpack.NoErrorsPlugin()
+	]
 };

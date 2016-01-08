@@ -26,14 +26,14 @@ var Posts = React.createClass({
 				return React.createElement('li', {
 						key: post.key,
 						style: {listStyleType: 'none'}},
-					React.createElement('h2', {}, post.title),
-					React.createElement('h5', {style: {marginBottom: '25px'}}, post.date),
-					React.createElement('p', {style: {marginLeft: '5px', marginBottom: '50px'}}, post.body)
+					React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
+					React.createElement('h4', {style: {marginBottom: '25px'}}, post.date),
+					React.createElement('p', {style: {marginLeft: '5px'}}, post.body)
 				)
 			});
 
 		return(
-			React.createElement('div', {},
+			React.createElement('div', {style: {marginLeft: '75px'}},
 				React.createElement('ul', {}, postItemElements)
 			)
 		)

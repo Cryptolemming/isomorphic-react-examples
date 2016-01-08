@@ -27,14 +27,14 @@ var Nav = React.createClass({
 					style: {
 						listStyleType: 'none',
 						display: 'inline',
-						margin: '5px',
+						marginRight: '5px',
 					}},
-				React.createElement('a', {href: 'https://localhost:3000/' + value}, value)
+				React.createElement('a', {href: 'http://localhost:3000/' + value}, value)
 			);
 		});
 
 		return (
-			React.createElement('div', {}, 
+			React.createElement('div', {style: {marginLeft: '75px'}}, 
 				React.createElement('ul', {}, navItemElements)
 			)
 		)

@@ -23,7 +23,6 @@
     "json-loader": "0.5.4",
     "react": "0.14.3",
     "react-dom": "0.14.3",
-    "request": "2.67.0",
     "swig": "1.4.2",
     "webpack": "1.12.9"
   }
