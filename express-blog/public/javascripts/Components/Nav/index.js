@@ -13,11 +13,7 @@ var Nav = React.createClass({
 		};
 	},
 
-	_onNavChange: function() {
-		// when nav changes map over navItems to set address to true
-		// there can only be one true
-		// then change state
-	},
+	
 
 	render: function() {
 		var navObject = this.state.navItems;

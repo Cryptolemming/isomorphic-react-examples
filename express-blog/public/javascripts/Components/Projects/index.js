@@ -24,7 +24,7 @@ var Projects = React.createClass({
 		var projectItemElements = this.state.projects
 			.map(function(project, index) {
 				return React.createElement('li', {
-						key: inex,
+						key: index,
 						style: {listStyleType: 'none'}},
 					React.createElement('h2', {}, project.name),
 					React.createElement('h5', {style: {marginBottom: '15px'}}, project.date),

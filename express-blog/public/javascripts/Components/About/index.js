@@ -1,36 +1,21 @@
 'use strict';
 
 var About = React.createClass({
-	propTypes: {
-		source: React.PropTypes.string.isRequired,
-	},
-
 	getInitialState: function() {
 		return {
 			about: {}
 		};
 	},
 
-	componentDidMount: function() {
-		$.get(this.props.source, function(result) {
-			var musicItems = result.data;
-			if (this.isMounted()) {
-				this.setState({music: musicItems});
-			}
-		}.bind(this));
-	},
-
 	render: function() {
 		
 		return(
-			React.createElement('div', {},
-				React.createElement('ul', {})
-			)
+			React.createElement('div', {}, 'About Page')
 		)
 	}
 });
 
 ReactDOM.render(
-	React.createElement(About, {source: 'http://localhost:3000/api/about'}),
+	React.createElement(About),
 	document.getElementById('about')
 );

@@ -1,10 +1,12 @@
 var webpack = require('webpack');
 var path = require('path');
+var commonsPlugin = 
+	new webpack.optimize.CommonsChunkPlugin('common.js');
 
 module.exports = {
 	entry: {
 		Posts: './public/javascripts/Components/Posts/index.js',
-		Music: ['./public/javascripts/Components/Music/index.js'],
+		Music: './public/javascripts/Components/Music/index.js',
 		Projects: './public/javascripts/Components/Projects/index.js',
 		About: './public/javascripts/Components/About/index.js',
 		Home: './public/javascripts/Components/Home/index.js',
@@ -39,6 +41,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.NoErrorsPlugin()
+		new webpack.NoErrorsPlugin(),
+		commonsPlugin
 	]
 };
