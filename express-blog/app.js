@@ -1,3 +1,4 @@
+require('./database');
 var express = require('express');
 var swig = require('swig');
 var path = require('path');

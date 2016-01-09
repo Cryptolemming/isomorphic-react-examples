@@ -13,7 +13,7 @@ var Posts = React.createClass({
 
 	componentDidMount: function() {
 		$.get(this.props.source, function(result) {
-			var postItems = result.data;
+			var postItems = result;
 			if (this.isMounted()) {
 				this.setState({posts: postItems});
 			}

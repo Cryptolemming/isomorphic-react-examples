@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var mongoose = require('mongoose');
+var Post = mongoose.model('posts');
+
 var posts = {
 	data: [
 		{date: '1', title: 'title 1', body: 'body 1'},
@@ -46,7 +49,10 @@ var home= postsData.concat(musicData, projectsData).sort(compareDates).slice(0,4
 router
 	// Posts API
 	.get('/posts', function(req, res) {
-		res.send(posts);
+		Post.find(function(err, posts) {
+			console.log(posts);
+			res.send(posts);
+		});
 	})
 
 	// Music API

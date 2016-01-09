@@ -19,7 +19,7 @@ webpackJsonp([4,6],[
 
 		componentDidMount: function componentDidMount() {
 			$.get(this.props.source, (function (result) {
-				var postItems = result.data;
+				var postItems = result;
 				if (this.isMounted()) {
 					this.setState({ posts: postItems });
 				}
