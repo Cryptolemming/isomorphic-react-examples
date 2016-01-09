@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 'use strict';
 
 var Projects = React.createClass({
@@ -22,11 +24,12 @@ var Projects = React.createClass({
 	render: function() {
 		var projectItemElements = this.state.projects
 			.map(function(project, index) {
+				var date = moment(post.date).format('MM-DD-YYYY');
 				return React.createElement('li', {
 						key: index,
 						style: {listStyleType: 'none'}},
 					React.createElement('h2', {}, project.name),
-					React.createElement('h5', {style: {marginBottom: '15px'}}, project.date),
+					React.createElement('h5', {style: {marginBottom: '15px'}}, date),
 					React.createElement('img', {src: project.picture, style: {width: '250px', marginBottom: '15px', marginLeft: '5px'}}),
 					React.createElement('ul', {}, project.languages.map(function(language) {
 						return React.createElement('li', {
