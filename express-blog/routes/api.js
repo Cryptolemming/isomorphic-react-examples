@@ -41,6 +41,7 @@ function compareDates(a, b) {
 		return 0;
 }
 
+// filter for most recent entries across types for home page
 var postsData = posts.data;
 var musicData = music.data;
 var projectsData = projects.data;

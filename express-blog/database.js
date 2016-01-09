@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Post = new Schema({
-	date: String,
+	date: {type: Date, default: new Date()},
 	title: String,
 	body: String
 });

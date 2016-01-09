@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 'use strict';
 
 var Posts = React.createClass({
@@ -23,11 +25,12 @@ var Posts = React.createClass({
 	render: function() {
 		var postItemElements = this.state.posts
 			.map(function(post, index) {
+				var date = moment(post.date).format('MM-DD-YYYY');
 				return React.createElement('li', {
 						key: index,
 						style: {listStyleType: 'none'}},
 					React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
-					React.createElement('h4', {style: {marginBottom: '25px'}}, post.date),
+					React.createElement('h4', {style: {marginBottom: '25px'}}, date),
 					React.createElement('p', {style: {marginLeft: '5px'}}, post.body)
 				)
 			});
