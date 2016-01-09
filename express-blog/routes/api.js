@@ -3,7 +3,7 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 var Post = mongoose.model('posts');
-var Song = mongoose.model('music');
+var Song = mongoose.model('songs');
 var Project = mongoose.model('projects');
 
 // function to compare the dates of entries for sorting
@@ -29,8 +29,8 @@ router
 
 	// Music API
 	.get('/music', function(req, res) {
-		Song.find(function(err, music) {
-			res.send(music);
+		Song.find(function(err, songs) {
+			res.send(songs);
 		});
 	})
 

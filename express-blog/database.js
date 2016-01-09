@@ -23,6 +23,6 @@ var Project = new Schema({
 });
 
 mongoose.model('posts', Post);
-mongoose.model('music', Song);
+mongoose.model('songs', Song);
 mongoose.model('projects', Project);
 mongoose.connect('mongodb://localhost/myblog');
