@@ -19,9 +19,8 @@ webpackJsonp([5,6],[
 
 		componentDidMount: function componentDidMount() {
 			$.get(this.props.source, (function (result) {
-				var projectItems = result.data;
 				if (this.isMounted()) {
-					this.setState({ projects: projectItems });
+					this.setState({ projects: result });
 				}
 			}).bind(this));
 		},

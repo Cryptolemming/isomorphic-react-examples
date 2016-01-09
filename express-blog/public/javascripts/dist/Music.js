@@ -19,9 +19,8 @@ webpackJsonp([2,6],[
 
 		componentDidMount: function componentDidMount() {
 			$.get(this.props.source, (function (result) {
-				var musicItems = result.data;
 				if (this.isMounted()) {
-					this.setState({ music: musicItems });
+					this.setState({ music: result });
 				}
 			}).bind(this));
 		},

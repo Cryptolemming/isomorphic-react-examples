@@ -13,9 +13,8 @@ var Music = React.createClass({
 
 	componentDidMount: function() {
 		$.get(this.props.source, function(result) {
-			var musicItems = result.data;
 			if (this.isMounted()) {
-				this.setState({music: musicItems});
+				this.setState({music: result});
 			}
 		}.bind(this));
 	},

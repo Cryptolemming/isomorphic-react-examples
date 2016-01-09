@@ -13,9 +13,8 @@ var Projects = React.createClass({
 
 	componentDidMount: function() {
 		$.get(this.props.source, function(result) {
-			var projectItems = result.data;
 			if (this.isMounted()) {
-				this.setState({projects: projectItems});
+				this.setState({projects: result});
 			}
 		}.bind(this));
 	},
