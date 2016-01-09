@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var Post = mongoose.model('posts');
-var Song = mongoose.model('songs');
-var Project = mongoose.model('projects');
+var Post = mongoose.model('Post');
+var Song = mongoose.model('Song');
+var Project = mongoose.model('Project');
 
 // function to compare the dates of entries for sorting
 function compareDates(a, b) {
@@ -22,7 +22,15 @@ function compareDates(a, b) {
 router
 	// Posts API
 	.get('/posts', function(req, res) {
-		Post.find(function(err, posts) {
+		var posts = Post.find().sort({_id: -1});
+		posts.find(function(err, posts) {
+			res.send(posts);
+		});
+	})
+
+	.get('/posts/:title', function(req, res) {
+		var query = {title: req.params.title};
+		Post.findOne(query, function(err, posts) {
 			res.send(posts);
 		});
 	})

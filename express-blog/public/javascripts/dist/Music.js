@@ -31,13 +31,13 @@ webpackJsonp([2,6],[
 
 		render: function render() {
 			var musicItemElements = this.state.music.map(function (song, index) {
-				var date = moment(post.date).format('MM-DD-YYYY');
+				var date = moment(song.date).format('MM-DD-YYYY');
 				return React.createElement('li', {
 					key: index,
-					style: { listStyleType: 'none' } }, React.createElement('h2', {}, song.artist + ': ' + song.title), React.createElement('h5', { style: { marginBottom: '25px' } }, date), React.createElement('iframe', { src: song.link, style: { marginLeft: '5px', marginBottom: '50px' } }));
+					style: { listStyleType: 'none' } }, React.createElement('h1', { style: { marginTop: '50px' } }, song.artist + ': ' + song.title), React.createElement('h5', { style: { marginBottom: '25px' } }, date), React.createElement('iframe', { src: song.link, style: { marginLeft: '5px', marginBottom: '50px' } }));
 			});
 
-			return React.createElement('div', {}, React.createElement('ul', {}, musicItemElements));
+			return React.createElement('div', { style: { marginLeft: '75px' } }, React.createElement('ul', {}, musicItemElements));
 		}
 	});
 

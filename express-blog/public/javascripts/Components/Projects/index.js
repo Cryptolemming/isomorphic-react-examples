@@ -24,11 +24,11 @@ var Projects = React.createClass({
 	render: function() {
 		var projectItemElements = this.state.projects
 			.map(function(project, index) {
-				var date = moment(post.date).format('MM-DD-YYYY');
+				var date = moment(project.date).format('MM-DD-YYYY');
 				return React.createElement('li', {
 						key: index,
 						style: {listStyleType: 'none'}},
-					React.createElement('h2', {}, project.name),
+					React.createElement('h1', {style: {marginTop: '50px'}}, project.name),
 					React.createElement('h5', {style: {marginBottom: '15px'}}, date),
 					React.createElement('img', {src: project.picture, style: {width: '250px', marginBottom: '15px', marginLeft: '5px'}}),
 					React.createElement('ul', {}, project.languages.map(function(language) {
@@ -46,7 +46,7 @@ var Projects = React.createClass({
 			});
 
 		return(
-			React.createElement('div', {},
+			React.createElement('div', {style: {marginLeft: '75px'}},
 				React.createElement('ul', {}, projectItemElements)
 			)
 		)

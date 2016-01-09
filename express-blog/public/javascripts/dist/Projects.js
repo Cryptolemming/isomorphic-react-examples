@@ -31,10 +31,10 @@ webpackJsonp([5,6],[
 
 		render: function render() {
 			var projectItemElements = this.state.projects.map(function (project, index) {
-				var date = moment(post.date).format('MM-DD-YYYY');
+				var date = moment(project.date).format('MM-DD-YYYY');
 				return React.createElement('li', {
 					key: index,
-					style: { listStyleType: 'none' } }, React.createElement('h2', {}, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginBottom: '15px', marginLeft: '5px' } }), React.createElement('ul', {}, project.languages.map(function (language) {
+					style: { listStyleType: 'none' } }, React.createElement('h1', { style: { marginTop: '50px' } }, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginBottom: '15px', marginLeft: '5px' } }), React.createElement('ul', {}, project.languages.map(function (language) {
 					return React.createElement('li', {
 						style: {
 							listStyleType: 'none',
@@ -46,7 +46,7 @@ webpackJsonp([5,6],[
 				})), React.createElement('p', { style: { marginLeft: '5px', marginBottom: '50px' } }, project.summary));
 			});
 
-			return React.createElement('div', {}, React.createElement('ul', {}, projectItemElements));
+			return React.createElement('div', { style: { marginLeft: '75px' } }, React.createElement('ul', {}, projectItemElements));
 		}
 	});
 
