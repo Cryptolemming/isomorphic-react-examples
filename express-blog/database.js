@@ -12,12 +12,14 @@ var songSchema = new Schema({
 	date: {type: Date, default: new Date()},
 	artist: String,
 	title: String,
+	title_slug: String,
 	link: String
 });
 
 var projectSchema = new Schema({
 	date: {type: Date, default: new Date()},
 	name: String,
+	name_slug: String,
 	picture: String,
 	languages: Array,
 	summary: String
@@ -35,6 +37,11 @@ return text.toString().toLowerCase()
 
 postSchema.pre('save', function (next) {
     this.title_slug = slugify(this.title);
+    next(); 
+  });
+
+projectSchema.pre('save', function (next) {
+    this.name_slug = slugify(this.name);
     next(); 
   });
 

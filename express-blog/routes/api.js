@@ -38,15 +38,23 @@ router
 
 	// Music API
 	.get('/music', function(req, res) {
-		Song.find(function(err, songs) {
+		var songs = Song.find().sort({_id: -1});
+		Song.find(function(err, song) {
 			res.send(songs);
 		});
 	})
 
 	// Project API
 	.get('/projects', function(req, res) {
+		var projects = Project.find().sort({_id: -1});
 		Project.find(function(err, projects) {
 			res.send(projects);
+		});
+	})
+
+	.get('/projects/:name_slug', function(req, res) {
+		Project.find(function(err, project) {
+			res.send(project);
 		});
 	})
 

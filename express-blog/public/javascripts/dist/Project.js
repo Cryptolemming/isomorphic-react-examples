@@ -1,4 +1,4 @@
-webpackJsonp([7,8],[
+webpackJsonp([6,8],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -8,8 +8,11 @@ webpackJsonp([7,8],[
 
 	'use strict';
 
-	var Projects = React.createClass({
-		displayName: 'Projects',
+	var pathname = window.location.pathname;
+	var projectSlug = pathname.substring(pathname.lastIndexOf('/') + 1);
+
+	var Project = React.createClass({
+		displayName: 'Project',
 
 		propTypes: {
 			source: React.PropTypes.string.isRequired
@@ -17,40 +20,36 @@ webpackJsonp([7,8],[
 
 		getInitialState: function getInitialState() {
 			return {
-				projects: []
+				project: {}
 			};
 		},
 
 		componentDidMount: function componentDidMount() {
 			$.get(this.props.source, (function (result) {
 				if (this.isMounted()) {
-					this.setState({ projects: result });
+					this.setState({ project: result });
 				}
 			}).bind(this));
 		},
 
 		render: function render() {
-			var projectItemElements = this.state.projects.map(function (project, index) {
-				var date = moment(project.date).format('MM-DD-YYYY');
+			var project = this.state.project;
+			var date = moment(project.date).format('MM[/]DD[/]YYYY');
+			return React.createElement('div', { style: { marginLeft: '75px' } }, React.createElement('li', {
+				style: { listStyleType: 'none' } }, React.createElement('h1', { style: { marginTop: '50px' } }, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginBottom: '15px', marginLeft: '5px' } }), React.createElement('ul', {}, project.languages.map(function (language) {
 				return React.createElement('li', {
-					key: index,
-					style: { listStyleType: 'none' } }, React.createElement('h1', { style: { marginTop: '50px' } }, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginBottom: '15px', marginLeft: '5px' } }), React.createElement('ul', {}, project.languages.map(function (language) {
-					return React.createElement('li', {
-						style: {
-							listStyleType: 'none',
-							display: 'inline',
-							paddingRight: '5px',
-							opacity: '.8',
-							fontSize: '12px'
-						} }, language);
-				})), React.createElement('p', { style: { marginLeft: '5px', marginBottom: '50px' } }, project.summary));
-			});
-
-			return React.createElement('div', { style: { marginLeft: '75px' } }, React.createElement('ul', {}, projectItemElements));
+					style: {
+						listStyleType: 'none',
+						display: 'inline',
+						paddingRight: '5px',
+						opacity: '.8',
+						fontSize: '12px'
+					} }, language);
+			})), React.createElement('p', { style: { marginLeft: '5px', marginBottom: '50px' } }, project.summary)));
 		}
 	});
 
-	ReactDOM.render(React.createElement(Projects, { source: 'http://localhost:3000/api/projects' }), document.getElementById('projects'));
+	ReactDOM.render(React.createElement(Project, { source: 'http://localhost:3000/api/projects' + projectSlug }), document.getElementById('project'));
 
 /***/ },
 /* 1 */

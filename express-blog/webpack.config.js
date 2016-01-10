@@ -9,6 +9,7 @@ module.exports = {
 		Post: './public/javascripts/Components/Post/index.js',
 		Music: './public/javascripts/Components/Music/index.js',
 		Projects: './public/javascripts/Components/Projects/index.js',
+		Project: './public/javascripts/Components/Project/index.js',
 		About: './public/javascripts/Components/About/index.js',
 		Home: './public/javascripts/Components/Home/index.js',
 		Nav: './public/javascripts/Components/Nav/index.js',
