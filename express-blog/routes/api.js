@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var Post = mongoose.model('Post');
-var Song = mongoose.model('Song');
-var Project = mongoose.model('Project');
+var Post = mongoose.model('posts');
+var Song = mongoose.model('songs');
+var Project = mongoose.model('projects');
 
 // function to compare the dates of entries for sorting
 function compareDates(a, b) {
@@ -33,6 +33,19 @@ router
 		Post.findOne(query, function(err, posts) {
 			res.send(posts);
 		});
+	})
+
+	// Forms
+	.get('/admin', function(req, res) {
+		res.render('admin');
+	})
+
+	.post('/admin', function(req, res) {
+		new Post({title: req.body.title, body: req.body.body})
+			.save(function(err, post) {
+				console.log(post);
+				res.redirect('/posts');
+			});
 	})
 
 	// Music API

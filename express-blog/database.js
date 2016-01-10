@@ -38,7 +38,7 @@ postSchema.pre('save', function (next) {
     next(); 
   });
 
-mongoose.model('Post', postSchema);
-mongoose.model('Song', songSchema);
-mongoose.model('Project', projectSchema);
+mongoose.model('posts', postSchema);
+mongoose.model('songs', songSchema);
+mongoose.model('projects', projectSchema);
 mongoose.connect('mongodb://localhost/myblog');

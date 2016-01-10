@@ -40,6 +40,9 @@ module.exports = {
 			}
 		]
 	},
+	resolve: {
+		extensions: ['', '.js', '.es6', '.jsx']
+	},
 	plugins: [
 		new webpack.NoErrorsPlugin(),
 		commonsPlugin

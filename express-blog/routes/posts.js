@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var Post = mongoose.model('Post');
+var Post = mongoose.model('posts');
 
 router
 	.get('/', function(req, res) {
