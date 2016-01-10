@@ -3,11 +3,33 @@
 {% block content %}
   <div id='admin'></div>
 
-	<form method='post' action'/api/posts/admin'>
-		<label>Title</label>
-		<input type='text' name='title'></br>
-		<label>Body</label>
-		<input type='text' name='body'></br>
-		<button type='submit'>Save</button>
-	</form> 
+	<div class='form posts-form'>
+		<form method='post' action'/admin'>
+			<label>Title</label>
+			<input type='text' name='postTitle'></br>
+			<label>Body</label>
+			<input type='text' name='body'></br>
+			<button type='submit'>Save</button>
+		</form> 
+	</div>
+	
+	<div class='form songs-form'>
+		<form method='post' action'/admin'>
+			<label>Title</label>
+			<input type='text' name='songTitle'></br>
+			<label>Body</label>
+			<input type='text' name='body'></br>
+			<button type='submit'>Save</button>
+		</form> 
+	</div>
+
+	<div class='form projects-form'>
+		<form method='post' action'/admin'>
+			<label>Title</label>
+			<input type='text' name='projectTitle'></br>
+			<label>Body</label>
+			<input type='text' name='body'></br>
+			<button type='submit'>Save</button>
+		</form> 
+	</div>
 {% endblock %}

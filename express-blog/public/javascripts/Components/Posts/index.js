@@ -30,7 +30,7 @@ var Posts = React.createClass({
 						key: index,
 						style: {listStyleType: 'none'}},
 					React.createElement('h1', {style: {marginTop: '50px'}}, 
-						React.createElement('a', {href: 'http://localhost:3000/posts/ ' + post.title}, post.title)),
+						React.createElement('a', {href: 'http://localhost:3000/posts/' + post.title_slug}, post.title)),
 					React.createElement('h5', {style: {marginBottom: '25px'}}, date),
 					React.createElement('p', {style: {marginLeft: '5px'}}, post.body)
 				)

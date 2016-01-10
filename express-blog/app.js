@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 // routes define
 var api = require('./routes/api');
+var admin = require('./routes/admin');
 var posts = require('./routes/posts');
 var music = require('./routes/music');
 var projects = require('./routes/projects');
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes initialize
 app.use('/', index);
 app.use('/api', api);
+app.use('/admin', admin);
 app.use('/posts/', posts);
 app.use('/music/', music);
 app.use('/projects/', projects);

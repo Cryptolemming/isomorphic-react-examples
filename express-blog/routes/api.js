@@ -28,24 +28,11 @@ router
 		});
 	})
 
-	.get('/posts/:title', function(req, res) {
-		var query = {title: req.params.title};
-		Post.findOne(query, function(err, posts) {
-			res.send(posts);
+	.get('/posts/:title_slug', function(req, res) {
+		var query = {title_slug: req.params.title_slug};
+		Post.findOne(query, function(err, post) {
+			res.send(post);
 		});
-	})
-
-	// Forms
-	.get('/admin', function(req, res) {
-		res.render('admin');
-	})
-
-	.post('/admin', function(req, res) {
-		new Post({title: req.body.title, body: req.body.body})
-			.save(function(err, post) {
-				console.log(post);
-				res.redirect('/posts');
-			});
 	})
 
 	// Music API
