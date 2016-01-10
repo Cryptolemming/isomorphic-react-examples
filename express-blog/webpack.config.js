@@ -6,6 +6,7 @@ var commonsPlugin =
 module.exports = {
 	entry: {
 		Posts: './public/javascripts/Components/Posts/index.js',
+		Post: './public/javascripts/Components/Post/index.js',
 		Music: './public/javascripts/Components/Music/index.js',
 		Projects: './public/javascripts/Components/Projects/index.js',
 		About: './public/javascripts/Components/About/index.js',

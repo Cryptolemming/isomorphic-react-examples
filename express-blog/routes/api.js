@@ -31,6 +31,7 @@ router
 	.get('/posts/:title_slug', function(req, res) {
 		var query = {title_slug: req.params.title_slug};
 		Post.findOne(query, function(err, post) {
+			console.log(post);
 			res.send(post);
 		});
 	})

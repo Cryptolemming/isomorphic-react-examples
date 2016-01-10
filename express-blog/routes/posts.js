@@ -10,7 +10,7 @@ router
 	})
 
 	.get('/:title_slug', function(req, res) {
-		var query = Post.find({title_slug: req.params.title_slug})
+		var query = {title_slug: req.params.title_slug};
 		Post.findOne(query, function(err, post) {
 			res.render('post');
 		});

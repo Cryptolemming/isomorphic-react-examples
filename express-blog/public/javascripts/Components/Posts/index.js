@@ -37,6 +37,7 @@ var Posts = React.createClass({
 			});
 
 		return(
+
 			React.createElement('div', {style: {marginLeft: '75px'}},
 				React.createElement('ul', {}, postItemElements)
 			)
