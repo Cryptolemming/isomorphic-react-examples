@@ -21,7 +21,7 @@ var projectSchema = new Schema({
 	name: String,
 	name_slug: String,
 	picture: String,
-	languages: Array,
+	languages: String,
 	summary: String
 });
 

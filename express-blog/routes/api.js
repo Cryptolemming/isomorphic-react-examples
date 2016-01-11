@@ -31,7 +31,6 @@ router
 	.get('/posts/:title_slug', function(req, res) {
 		var query = {title_slug: req.params.title_slug};
 		Post.findOne(query, function(err, post) {
-			console.log(post);
 			res.send(post);
 		});
 	})
@@ -39,21 +38,22 @@ router
 	// Music API
 	.get('/music', function(req, res) {
 		var songs = Song.find().sort({_id: -1});
-		Song.find(function(err, song) {
-			res.send(songs);
+		songs.find(function(err, song) {
+			res.send(song);
 		});
 	})
 
 	// Project API
 	.get('/projects', function(req, res) {
 		var projects = Project.find().sort({_id: -1});
-		Project.find(function(err, projects) {
+		projects.find(function(err, projects) {
 			res.send(projects);
 		});
 	})
 
 	.get('/projects/:name_slug', function(req, res) {
-		Project.find(function(err, project) {
+		var query = {name_slug: req.params.name_slug};
+		Project.findOne(query, function(err, project) {
 			res.send(project);
 		});
 	})
