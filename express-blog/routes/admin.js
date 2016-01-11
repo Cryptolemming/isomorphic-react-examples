@@ -9,7 +9,7 @@ var Project = mongoose.model('projects');
 router
 	// Post Forms
 	.get('/posts', function(req, res) {
-		res.render('admin');
+		res.render('admin', {title: 'Posts'});
 	})
 
 	.post('/posts', function(req, res) {
@@ -21,7 +21,7 @@ router
 
 	// Song Forms
 	.get('/songs', function(req, res) {
-		res.render('admin');
+		res.render('admin', {title: 'Songs'});
 	})
 
 	.post('/songs', function(req, res) {
@@ -33,7 +33,7 @@ router
 
 	// Project Forms
 	.get('/projects', function(req, res) {
-		res.render('admin');
+		res.render('admin', {title: 'Projects'});
 	})
 
 	.post('/projects', function(req, res) {

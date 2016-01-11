@@ -3,7 +3,9 @@
 {% block content %}
   <div id='admin'></div>
 
+	<p>Posting to '{{title}}'</p>
 	<div class='form posts-form'>
+		<a href='http://localhost:3000/admin/posts'><h2>Posts</h2></a>
 		<form method='post' action'/admin/posts'>
 			<label>Title</label>
 			<input type='text' name='postTitle'></br>
@@ -13,6 +15,7 @@
 		</form> 
 	</div>
 	</br>
+	<a href='http://localhost:3000/admin/songs'><h2>Songs</h2></a>
 	<div class='form songs-form'>
 		<form method='post' action'/admin/songs'>
 			<label>Title</label>
@@ -25,9 +28,10 @@
 		</form> 
 	</div>
 	</br>
+	<a href='http://localhost:3000/admin/projects'><h2>Projects</h2></a>
 	<div class='form projects-form'>
 		<form method='post' action'/admin/projects'>
-			<label>Name</label>
+			<label>Title</label>
 			<input type='text' name='projectName'></br>
 			<label>Picture</label>
 			<input type='text' name='picture'></br>
