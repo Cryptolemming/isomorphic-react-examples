@@ -19,11 +19,17 @@ function compareDates(a, b) {
 // filter for most recent entries across types for home page
 // var home= postsData.concat(musicData, projectsData).sort(compareDates).slice(0,4);
 
+var homeData = []
+var homeDataCollection = homeData.concat(postData, songData, projectData).sort(compareDates).slice(0,4);
+
+var postData = Post.find().sort({_id: -1}).limit(5);
+var songData = Song.find().sort({_id: -1}).limit(5);
+var projectData = Project.find().sort({_id: -1}).limit(5);
+
 router
 	// Posts API
 	.get('/posts', function(req, res) {
-		var posts = Post.find().sort({_id: -1});
-		posts.find(function(err, posts) {
+		postData.find(function(err, posts) {
 			res.send(posts);
 		});
 	})
@@ -60,7 +66,7 @@ router
 
 	// Home API
 	.get('/home', function(req, res) {
-		res.render('home');
+		res.send(homeDataCollection);
 	});
 
 module.exports = router;

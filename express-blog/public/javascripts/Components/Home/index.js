@@ -16,11 +16,7 @@ var Home = React.createClass({
 	},
 
 	render: function() {
-
-		var newestEntries = this.state.source.map(function(entry) {
-			return entry.slice(0, 5)
-		});
-
+		/*
 		var homeItemElements = this.state.source.map(function(item, index) {
 			if (item.artist) {
 				var song = item;
@@ -62,19 +58,15 @@ var Home = React.createClass({
 				)
 			}
 		});
-
+		*/
 		return(
-			React.createElement('div', {}, newestEntries)
+			React.createElement('div', {})
 		);
 		
 	}
 });
 
 ReactDOM.render(
-	React.createElement(Home, {source: [
-		'http://localhost:3000/api/posts',
-		'http://localhost:3000/api/music',
-		'http://localhost:3000/api/projects'
-		]}),
+	React.createElement(Home, {source: 'http://localhost:3000/api/home'}),
 	document.getElementById('home')
 );
