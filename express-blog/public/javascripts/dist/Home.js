@@ -9,20 +9,25 @@ webpackJsonp([1,8],[
 
 		getInitialState: function getInitialState() {
 			return {
-				home: []
+				source: []
 			};
 		},
 
 		componentDidMount: function componentDidMount() {
 			$.get(this.props.source, (function (result) {
 				if (this.isMounted()) {
-					this.setState({ home: result });
+					this.setState({ source: result });
 				}
 			}).bind(this));
 		},
 
 		render: function render() {
-			var homeItemElements = this.state.home.map(function (item, index) {
+
+			var newestEntries = this.state.source.map(function (entry) {
+				return entry.slice(0, 5);
+			});
+
+			var homeItemElements = this.state.source.map(function (item, index) {
 				if (item.artist) {
 					var song = item;
 					return React.createElement('li', {
@@ -50,11 +55,11 @@ webpackJsonp([1,8],[
 				}
 			});
 
-			return React.createElement('div', {}, homeItemElements);
+			return React.createElement('div', {}, newestEntries);
 		}
 	});
 
-	ReactDOM.render(React.createElement(Home, { source: 'http://localhost:3000/api/home' }), document.getElementById('home'));
+	ReactDOM.render(React.createElement(Home, { source: ['http://localhost:3000/api/posts', 'http://localhost:3000/api/music', 'http://localhost:3000/api/projects'] }), document.getElementById('home'));
 
 /***/ }
 ]);

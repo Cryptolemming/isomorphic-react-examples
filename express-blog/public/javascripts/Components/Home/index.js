@@ -3,20 +3,25 @@
 var Home = React.createClass({
 	getInitialState: function() {
 		return {
-			home: []
+			source: []
 		};
 	},
 
 	componentDidMount: function() {
 		$.get(this.props.source, function(result) {
 			if (this.isMounted()) {
-				this.setState({home: result});
+				this.setState({source: result});
 			}
 		}.bind(this));
 	},
 
 	render: function() {
-		var homeItemElements = this.state.home.map(function(item, index) {
+
+		var newestEntries = this.state.source.map(function(entry) {
+			return entry.slice(0, 5)
+		});
+
+		var homeItemElements = this.state.source.map(function(item, index) {
 			if (item.artist) {
 				var song = item;
 				return React.createElement('li', {
@@ -59,13 +64,17 @@ var Home = React.createClass({
 		});
 
 		return(
-			React.createElement('div', {}, homeItemElements)
+			React.createElement('div', {}, newestEntries)
 		);
 		
 	}
 });
 
 ReactDOM.render(
-	React.createElement(Home, {source: 'http://localhost:3000/api/home'}),
+	React.createElement(Home, {source: [
+		'http://localhost:3000/api/posts',
+		'http://localhost:3000/api/music',
+		'http://localhost:3000/api/projects'
+		]}),
 	document.getElementById('home')
 );
