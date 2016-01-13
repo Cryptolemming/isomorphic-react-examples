@@ -16,15 +16,9 @@ function compareDates(a, b) {
 		return 0;
 }
 
-// filter for most recent entries across types for home page
-// var home= postsData.concat(musicData, projectsData).sort(compareDates).slice(0,4);
-
-var homeData = []
-var homeDataCollection = homeData.concat(postData, songData, projectData).sort(compareDates).slice(0,4);
-
-var postData = Post.find().sort({_id: -1}).limit(5);
-var songData = Song.find().sort({_id: -1}).limit(5);
-var projectData = Project.find().sort({_id: -1}).limit(5);
+var postData = Post.find().sort({_id: -1});
+var songData = Song.find().sort({_id: -1});
+var projectData = Project.find().sort({_id: -1});
 
 router
 	// Posts API
@@ -43,16 +37,14 @@ router
 
 	// Music API
 	.get('/music', function(req, res) {
-		var songs = Song.find().sort({_id: -1});
-		songs.find(function(err, song) {
-			res.send(song);
+		songData.find(function(err, songs) {
+			res.send(songs);
 		});
 	})
 
 	// Project API
 	.get('/projects', function(req, res) {
-		var projects = Project.find().sort({_id: -1});
-		projects.find(function(err, projects) {
+		projectData.find(function(err, projects) {
 			res.send(projects);
 		});
 	})
@@ -66,7 +58,7 @@ router
 
 	// Home API
 	.get('/home', function(req, res) {
-		res.send(homeDataCollection);
+		res.render('Index');
 	});
 
 module.exports = router;
