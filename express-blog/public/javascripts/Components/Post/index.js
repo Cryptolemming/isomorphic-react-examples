@@ -29,7 +29,7 @@ var Post = React.createClass({
 		var date = moment(post.date).format('MM[/]DD[/]YYYY');
 		return (
 			React.createElement('div', {style: {marginLeft: '115px'}},
-				React.createElement('h1', {style: {marginTop: '50px'}}),
+				React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
 				React.createElement('h5', {style: {marginBottom: '25px'}}, date),
 				React.createElement('p', {style: {marginLeft: '5px'}}, post.body)
 			)
@@ -41,3 +41,5 @@ ReactDOM.render(
 	React.createElement(Post, {source: 'http://localhost:3000/api/posts/' + postSlug}),
 	document.getElementById('post')
 );
+
+module.exports = Post;
