@@ -7,6 +7,10 @@ var Song = mongoose.model('songs');
 var Project = mongoose.model('projects');
 
 router
+	.get('/', function(req, res) {
+		res.render('admin');
+	})
+
 	// Post Forms
 	.get('/posts', function(req, res) {
 		res.render('admin', {title: 'Posts'});
