@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var userSchema = new Schema({
+	email: String,
+	password: String
+});
+
 var postSchema = new Schema({
 	date: {type: Date, default: new Date()},
 	title: String,
@@ -45,6 +50,7 @@ projectSchema.pre('save', function (next) {
     next(); 
   });
 
+mongoose.model('users', userSchema);
 mongoose.model('posts', postSchema);
 mongoose.model('songs', songSchema);
 mongoose.model('projects', projectSchema);
