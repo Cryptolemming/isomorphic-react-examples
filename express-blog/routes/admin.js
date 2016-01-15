@@ -8,7 +8,7 @@ var Project = mongoose.model('projects');
 
 router
 	.get('/', function(req, res) {
-		res.render('admin');
+		res.render('login');
 	})
 
 	// Post Forms
