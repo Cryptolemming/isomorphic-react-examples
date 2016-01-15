@@ -3,13 +3,17 @@
 {% block content %}
   <div id='login'></div>
 
+  {% if error %}
+	<p>{{error}}</p>
+  {% endif %}
+
 	<p>Login</p>
 	<div class='form posts-form'>
 		<form method='post' action'/admin'>
 			<label>Name</label>
-			<input type='text' name='name'></br>
+			<input type='name' name='name' required=true></br>
 			<label>Password</label>
-			<input type='password' name='password'></br>
+			<input type='password' name='password' required=true></br>
 			<button type='submit'>Login</button>
 		</form> 
 	</div>

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
+var User = mongoose.model('users');
 var Post = mongoose.model('posts');
 var Song = mongoose.model('songs');
 var Project = mongoose.model('projects');
@@ -9,6 +10,22 @@ var Project = mongoose.model('projects');
 router
 	.get('/', function(req, res) {
 		res.render('login');
+	})
+
+	.post('/', function(req, res) {
+		User.findOne({name: req.body.name}, function(err, user) {
+			if (!user) {
+				res.render('login', {error: 'User not found'});
+			} else if (req.body.password === user.password) {
+				res.redirect('/admin/posts');
+			} else {
+				res.render('login', {error: 'Incorrect Password'});
+			}
+		});
+	})
+
+	.get('/dashboard', function(req, res) {
+		res.render('admin');
 	})
 
 	// Post Forms
