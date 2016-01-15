@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var session = require('client-sessions');
 
 var mongoose = require('mongoose');
 var User = mongoose.model('users');
@@ -17,7 +18,8 @@ router
 			if (!user) {
 				res.render('login', {error: 'User not found'});
 			} else if (req.body.password === user.password) {
-				res.redirect('/admin/posts');
+				req.session.user = user;
+				res.redirect('/admin/dashboard');
 			} else {
 				res.render('login', {error: 'Incorrect Password'});
 			}
@@ -25,7 +27,24 @@ router
 	})
 
 	.get('/dashboard', function(req, res) {
-		res.render('admin');
+		if (req.session && req.session.user) {
+			User.findOne({name: req.session.user.name}, function(err, user) {
+				if (!user) {
+					req.session.reset();
+					res.redirect('/');
+				} else {
+					res.locals.users = user;
+					res.render('admin');
+				}
+			})
+		} else {
+			res.redirect('/');
+		}
+	})
+
+	.get('/logout', function(req, res) {
+		req.session.reset();
+		req.redirect('/');
 	})
 
 	// Post Forms
