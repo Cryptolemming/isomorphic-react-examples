@@ -16,12 +16,13 @@ router
 	})
 
 	.post('/register', function(req, res) {
-		var hash = bcrypt.hashSync(req.body.password, bcrypt.genSatlSync(10));
-		var user = new User({
+		new User({
 			name: req.body.name,
-			password: hash
+			password: req.body.password
+		})
+		.save(function(err, user) {
+			res.redirect('/admin');
 		});
-		res.redirect('/admin');
 	})
 
 	// Login

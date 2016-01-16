@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var bcrypt = require('bcryptjs');
+var SALT_WORK_FACTOR = 10;
 
 var userSchema = new Schema({
-	name: String,
-	password: String
+	name: {type: String, required: true, index: {unique: true}},
+	password: {type: String, required: true}
 });
 
 var postSchema = new Schema({
@@ -39,6 +41,25 @@ return text.toString().toLowerCase()
   .replace(/^-+/, '')          // Trim - from start of text
   .replace(/-+$/, '');         // Trim - from end of text
 }
+
+userSchema.pre('save', function(next) {
+	var user = this;
+
+	// if password is not new or has not been modified move on
+	if (!user.isModified('password')) return next();
+
+	// otherwise generate a salt, hash the password and encrypt the input
+	bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+		if (err) return next(err);
+
+		bcrypt.hash(user.password, salt, function(err, hash) {
+			if (err) return next(err);
+
+			user.password = hash;
+			next();
+		});
+	});
+});
 
 postSchema.pre('save', function (next) {
     this.title_slug = slugify(this.title);
