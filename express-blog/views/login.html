@@ -9,6 +9,7 @@
 
 	<p>Login</p>
 	<div class='form posts-form'>
+		<input type='hidden' name='_csrf' value='{{csrfToken}}'>
 		<form method='post' action'/admin'>
 			<label>Name</label>
 			<input type='name' name='name' required=true></br>

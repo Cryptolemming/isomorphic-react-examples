@@ -21,7 +21,7 @@ function requireLogin(req, res, next) {
 
 router
 	// Register
-	.get('/register', function(req, res) {
+	.get('/register', requireLogin, function(req, res) {
 		res.render('register');
 	})
 

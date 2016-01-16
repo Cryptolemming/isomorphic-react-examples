@@ -4,8 +4,9 @@
   <div id='admin'></div>
 
 	<div class='form posts-form'>
-		<a href='http://localhost:3000/admin/posts'><h2>Posts</h2></a>
-		<form method='post' action'/admin/posts'>
+		<h2>Posts</h2>
+		<form method='post' action'/admin/dashboard'>
+			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
 			<input type='text' name='postTitle'></br>
 			<label>Body</label>
@@ -16,9 +17,10 @@
 
 	</br>
 
-	<a href='http://localhost:3000/admin/songs'><h2>Songs</h2></a>
 	<div class='form songs-form'>
-		<form method='post' action'/admin/songs'>
+		<h2>Songs</h2>
+		<form method='post' action'/admin/dashboard'>
+			<input type='hidden' name= '_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
 			<input type='text' name='songTitle'></br>
 			<label>Artist</label>
@@ -30,10 +32,11 @@
 	</div>
 
 	</br>
-	
-	<a href='http://localhost:3000/admin/projects'><h2>Projects</h2></a>
+
 	<div class='form projects-form'>
-		<form method='post' action'/admin/projects'>
+		<h2>Projects</h2>
+		<form method='post' action'/admin/dashboard'>
+			<input type='hidden' name= '_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
 			<input type='text' name='projectName'></br>
 			<label>Picture</label>

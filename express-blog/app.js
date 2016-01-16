@@ -44,15 +44,18 @@ app.use(session({
   secret: 'asdflsakwelasfkwieofuwoir82ldsfw22r23fwelfwif29203fsfaigpoig90092rowi',
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
+  httpOnly: true, // prevents browsers from having JavaScript access to cookies
+  secure: true, // only use cookies over HTTPS
+  ephemeral: true // delete the cookie when the browser is closed
 }));
 
 // session middleware for User instance
 app.use(function(req, res, next) {
   if (req.session && req.session.user) {
     User.findOne({name: req.session.user.name}, function(err, user) {
+      if(err){console.log(err)};
       if (user) {
         req.user = user;
-        delete req.user.password;
         req.session.user = req.user;
         res.locals.user = req.user;
       }
