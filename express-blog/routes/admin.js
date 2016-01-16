@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var session = require('client-sessions');
+var bcrypt = require('bcryptjs');
 
 var mongoose = require('mongoose');
 var User = mongoose.model('users');
@@ -9,6 +10,20 @@ var Song = mongoose.model('songs');
 var Project = mongoose.model('projects');
 
 router
+	// Register
+	.get('/register', function(req, res) {
+		res.render('register');
+	})
+
+	.post('/register', function(req, res) {
+		var hash = bcrypt.hashSync(req.body.password, bcrypt.genSatlSync(10));
+		var user = new User({
+			name: req.body.name,
+			password: hash
+		});
+		res.redirect('/admin');
+	})
+
 	// Login
 	.get('/', function(req, res) {
 		res.render('login');
@@ -18,14 +33,14 @@ router
 		User.findOne({name: req.body.name}, function(err, user) {
 			if (!user) {
 				res.render('login', {error: 'User not found'});
-			} else if (req.body.password === user.password) {
+			} else if (bcrypt.compareSync(req.body.password, user.password)) {
 				req.session.user = user;
 				res.redirect('/admin/dashboard');
 			} else {
 				res.render('login', {error: 'Incorrect Password'});
 			}
 		});
-	})
+	})	
 
 	// Admin dashboard
 	.get('/dashboard', function(req, res) {
@@ -72,11 +87,10 @@ router
 		}
 	})
 
-
 	// Logout
 	.get('/logout', function(req, res) {
 		req.session.reset();
-		req.redirect('/admin');
+		res.redirect('/admin');
 	});
 
 module.exports = router;

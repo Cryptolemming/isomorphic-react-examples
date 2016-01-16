@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var bcrypt = require('bcryptjs');
 var session = require('client-sessions');
 
 // routes define
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session middleware for User cookie
 app.use(session({
   cookieName: 'session',
   secret: 'asdflsakwelasfkwieofuwoir82ldsfw22r23fwelfwif29203fsfaigpoig90092rowi',
