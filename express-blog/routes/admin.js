@@ -9,6 +9,7 @@ var Song = mongoose.model('songs');
 var Project = mongoose.model('projects');
 
 router
+	// Login
 	.get('/', function(req, res) {
 		res.render('login');
 	})
@@ -26,6 +27,7 @@ router
 		});
 	})
 
+	// Admin dashboard
 	.get('/dashboard', function(req, res) {
 		if (req.session && req.session.user) {
 			User.findOne({name: req.session.user.name}, function(err, user) {
@@ -42,42 +44,21 @@ router
 		}
 	})
 
-	.get('/logout', function(req, res) {
-		req.session.reset();
-		req.redirect('/');
-	})
+	.post('/dashboard', function(req, res) {
 
-	// Post Forms
-	.get('/posts', function(req, res) {
-		res.render('admin', {title: 'Posts'});
-	})
-
-	.post('/posts', function(req, res) {
-		new Post({title: req.body.postTitle, body: req.body.body})
+		// Depending on which form was filled, create new entry and redirect
+		if (req.body.postTitle) {
+			new Post({title: req.body.postTitle, body: req.body.body})
 			.save(function(err, post) {
 				res.redirect('/posts');
 			});
-	})
-
-	// Song Forms
-	.get('/songs', function(req, res) {
-		res.render('admin', {title: 'Songs'});
-	})
-
-	.post('/songs', function(req, res) {
-		new Song({title: req.body.songTitle, arist: req.body.artist, link: req.body.link})
+		} else if (req.body.songTitle) {
+			new Song({title: req.body.songTitle, arist: req.body.artist, link: req.body.link})
 			.save(function(err, song) {
 				res.redirect('/music');
 			});
-	})
-
-	// Project Forms
-	.get('/projects', function(req, res) {
-		res.render('admin', {title: 'Projects'});
-	})
-
-	.post('/projects', function(req, res) {
-		new Project({
+		} else if (req.body.projectName) {
+			new Project({
 				name: req.body.projectName,
 				picture: req.body.picture,
 				languages: req.body.languages,
@@ -86,6 +67,16 @@ router
 			.save(function(err, project) {
 				res.redirect('/projects');
 			});
+		} else {
+			res.redirect('/');
+		}
 	})
+
+
+	// Logout
+	.get('/logout', function(req, res) {
+		req.session.reset();
+		req.redirect('/admin');
+	});
 
 module.exports = router;
