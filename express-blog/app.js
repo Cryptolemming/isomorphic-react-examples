@@ -9,6 +9,10 @@ var bodyParser = require('body-parser');
 var bcrypt = require('bcryptjs');
 var session = require('client-sessions');
 
+// User model for middleware
+var mongoose = require('mongoose');
+var User = mongoose.model('users');
+
 // routes define
 var api = require('./routes/api');
 var admin = require('./routes/admin');
@@ -41,6 +45,23 @@ app.use(session({
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
 }));
+
+// session middleware for User instance
+app.use(function(req, res, next) {
+  if (req.session && req.session.user) {
+    User.findOne({name: req.session.user.name}, function(err, user) {
+      if (user) {
+        req.user = user;
+        delete req.user.password;
+        req.session.user = req.user;
+        res.locals.user = req.user;
+      }
+      next();
+    });
+  } else {
+    next();
+  }
+});
 
 // routes initialize
 app.use('/', index);

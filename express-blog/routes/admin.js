@@ -9,6 +9,16 @@ var Post = mongoose.model('posts');
 var Song = mongoose.model('songs');
 var Project = mongoose.model('projects');
 
+// check whether User is logged in
+function requireLogin(req, res, next) {
+	if (!req.user) {
+		req.session.reset();
+		res.redirect('/admin');
+	} else {
+		next();
+	}
+};
+
 router
 	// Register
 	.get('/register', function(req, res) {
@@ -44,24 +54,11 @@ router
 	})	
 
 	// Admin dashboard
-	.get('/dashboard', function(req, res) {
-		if (req.session && req.session.user) {
-			User.findOne({name: req.session.user.name}, function(err, user) {
-				if (!user) {
-					req.session.reset();
-					res.redirect('/');
-				} else {
-					res.locals.users = user;
-					res.render('admin');
-				}
-			})
-		} else {
-			res.redirect('/');
-		}
+	.get('/dashboard', requireLogin, function(req, res) {
+		res.render('admin');
 	})
 
 	.post('/dashboard', function(req, res) {
-
 		// Depending on which form was filled, create new entry and redirect
 		if (req.body.postTitle) {
 			new Post({title: req.body.postTitle, body: req.body.body})
