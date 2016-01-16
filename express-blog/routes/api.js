@@ -56,9 +56,4 @@ router
 		});
 	})
 
-	// Home API
-	.get('/home', function(req, res) {
-		res.render('Index');
-	});
-
 module.exports = router;
