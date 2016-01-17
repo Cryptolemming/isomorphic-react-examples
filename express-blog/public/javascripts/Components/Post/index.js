@@ -17,13 +17,19 @@ var Post = React.createClass({
 		};
 	},
 
-	componentDidMount: function() {
+	componentWillMount: function() {
 		$.get(this.props.source, function(result) {
 			if (this.isMounted()) {
 				this.setState({post: result});
 			}
 		}.bind(this));
 	},
+
+	rawMarkup: function() {
+		console.log(this.state.post);
+	    var rawMarkup = marked(this.state.post.body, {sanitize: true});
+	    return { __html: rawMarkup };
+	 },
 
 	render: function() {
 		var post = this.state.post;
@@ -32,7 +38,7 @@ var Post = React.createClass({
 			React.createElement('div', {style: {marginLeft: '115px'}},
 				React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
 				React.createElement('h5', {style: {marginBottom: '25px'}}, date),
-				React.createElement('p', {}, marked('I am _markdown_'))
+				React.createElement('span', {dangerouslySetInnerHTML: this.rawMarkup()})
 			)
 		);
 	}

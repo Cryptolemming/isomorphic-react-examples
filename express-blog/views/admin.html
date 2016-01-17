@@ -5,12 +5,12 @@
 
 	<div class='form posts-form'>
 		<h2>Posts</h2>
-		<form method='post' action'/admin/dashboard'>
+		<form method='post' id='post' action'/admin/dashboard'>
 			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
 			<input type='text' name='postTitle'></br>
 			<label>Body</label>
-			<input type='textarea' name='body' id='content'></br>
+			<textarea name='body' form='post'></textarea></br>
 			<button type='submit'>Save</button>
 		</form> 
 	</div>
