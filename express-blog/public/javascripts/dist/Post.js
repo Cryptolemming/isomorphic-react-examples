@@ -25,6 +25,12 @@ webpackJsonp([4,8],[
 			};
 		},
 
+		getDefaultProps: function getDefaultProps() {
+			return {
+				source: 'http://localhost:3000/api/posts/' + postSlug
+			};
+		},
+
 		componentWillMount: function componentWillMount() {
 			$.get(this.props.source, (function (result) {
 				if (this.isMounted()) {
@@ -35,7 +41,7 @@ webpackJsonp([4,8],[
 
 		rawMarkup: function rawMarkup() {
 			console.log(this.state.post);
-			var rawMarkup = marked(this.state.post.body, { sanitize: true });
+			var rawMarkup = marked(this.state.post.body || '', { sanitize: true });
 			return { __html: rawMarkup };
 		},
 
@@ -46,7 +52,7 @@ webpackJsonp([4,8],[
 		}
 	});
 
-	ReactDOM.render(React.createElement(Post, { source: 'http://localhost:3000/api/posts/' + postSlug }), document.getElementById('post'));
+	ReactDOM.render(React.createElement(Post, {}), document.getElementById('post'));
 
 	module.exports = Post;
 

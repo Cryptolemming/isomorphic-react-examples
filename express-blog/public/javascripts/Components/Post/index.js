@@ -17,6 +17,12 @@ var Post = React.createClass({
 		};
 	},
 
+	getDefaultProps: function() {
+		return {
+			source: 'http://localhost:3000/api/posts/' + postSlug
+		};
+	},
+
 	componentWillMount: function() {
 		$.get(this.props.source, function(result) {
 			if (this.isMounted()) {
@@ -27,7 +33,7 @@ var Post = React.createClass({
 
 	rawMarkup: function() {
 		console.log(this.state.post);
-	    var rawMarkup = marked(this.state.post.body, {sanitize: true});
+	    var rawMarkup = marked(this.state.post.body || '', {sanitize: true});
 	    return { __html: rawMarkup };
 	 },
 
@@ -45,7 +51,7 @@ var Post = React.createClass({
 });
 
 ReactDOM.render(
-	React.createElement(Post, {source: 'http://localhost:3000/api/posts/' + postSlug}),
+	React.createElement(Post, {}),
 	document.getElementById('post')
 );
 
