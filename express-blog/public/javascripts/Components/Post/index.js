@@ -1,4 +1,5 @@
 var moment = require('moment');
+var marked = require('marked');
 
 'use strict';
 
@@ -31,7 +32,7 @@ var Post = React.createClass({
 			React.createElement('div', {style: {marginLeft: '115px'}},
 				React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
 				React.createElement('h5', {style: {marginBottom: '25px'}}, date),
-				React.createElement('p', {style: {marginLeft: '5px'}}, post.body)
+				React.createElement('p', {}, marked('I am _markdown_'))
 			)
 		);
 	}
