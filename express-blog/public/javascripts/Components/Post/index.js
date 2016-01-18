@@ -13,7 +13,7 @@ var Post = React.createClass({
 
 	getInitialState: function() {
 		return {
-			post: {}
+			post: null
 		};
 	},
 
@@ -32,21 +32,23 @@ var Post = React.createClass({
 	},
 
 	rawMarkup: function() {
-		console.log(this.state.post);
 	    var rawMarkup = marked(this.state.post.body || '', {sanitize: true});
 	    return { __html: rawMarkup };
 	 },
 
 	render: function() {
-		var post = this.state.post;
-		var date = moment(post.date).format('MM[/]DD[/]YYYY');
-		return (
-			React.createElement('div', {style: {marginLeft: '115px'}},
-				React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
-				React.createElement('h5', {style: {marginBottom: '25px'}}, date),
-				React.createElement('span', {dangerouslySetInnerHTML: this.rawMarkup()})
-			)
-		);
+		if (this.state.post) {
+			var post = this.state.post;
+			var date = moment(post.date).format('MM[/]DD[/]YYYY');
+			return (
+				React.createElement('div', {style: {marginLeft: '115px'}},
+					React.createElement('h1', {style: {marginTop: '50px'}}, post.title),
+					React.createElement('h5', {style: {marginBottom: '25px'}}, date),
+					React.createElement('span', {dangerouslySetInnerHTML: this.rawMarkup()})
+				)
+			);
+		 }
+		 return null;
 	}
 });
 
