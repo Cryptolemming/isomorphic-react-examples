@@ -12,7 +12,7 @@ var Project = React.createClass({
 
 	getInitialState: function() {
 		return {
-			project: {}
+			project: null
 		};
 	},
 
@@ -25,21 +25,24 @@ var Project = React.createClass({
 	},
 
 	render: function() {
-		var project = this.state.project;
-		var date = moment(project.date).format('MM[/]DD[/]YYYY');
-		return(
-			React.createElement('div', {style: {marginLeft: '115px'}},
-				React.createElement('h1', {style: {marginTop: '50px'}}, project.name),
-				React.createElement('h5', {style: {marginBottom: '15px'}}, date),
-				React.createElement('img', {src: project.picture, style: {width: '250px', marginLeft: '5px'}}),
-				React.createElement('p', {
-						style: {
-							opacity: '.8',
-							fontSize: '10px',
-						}}, project.languages),
-				React.createElement('p', {style: {marginLeft: '5px', marginBottom: '50px', marginTop: '25px'}}, project.summary)
-			)
-		);
+		if (this.state.project) {
+			var project = this.state.project;
+			var date = moment(project.date).format('MM[/]DD[/]YYYY');
+			return(
+				React.createElement('div', {style: {marginLeft: '115px'}},
+					React.createElement('h1', {style: {marginTop: '50px'}}, project.name),
+					React.createElement('h5', {style: {marginBottom: '15px'}}, date),
+					React.createElement('img', {src: project.picture, style: {width: '250px', marginLeft: '5px'}}),
+					React.createElement('p', {
+							style: {
+								opacity: '.8',
+								fontSize: '10px',
+							}}, project.languages),
+					React.createElement('p', {style: {marginLeft: '5px', marginBottom: '50px', marginTop: '25px'}}, project.summary)
+				)
+			);
+		};
+		return null;
 	}
 });
 
