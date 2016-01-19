@@ -1,4 +1,5 @@
 var moment = require('moment');
+var marked = require('marked');
 
 'use strict';
 
@@ -9,7 +10,7 @@ var Posts = React.createClass({
 
 	getInitialState: function() {
 		return {
-			posts: []
+			posts: null
 		};
 	},
 
@@ -23,25 +24,25 @@ var Posts = React.createClass({
 	},
 
 	render: function() {
-		var postItemElements = this.state.posts
-			.map(function(post, index) {
-				var date = moment(post.date).format('MM[/]DD[/]YYYY');
-				return React.createElement('li', {
-						key: index,
-						style: {listStyleType: 'none'}},
-					React.createElement('h1', {className: 'title', style: style}, 
-						React.createElement('a', {href: window.location.href + '/' + post.title_slug}, post.title)),
-					React.createElement('h5', {style: {marginBottom: '25px'}}, date),
-					React.createElement('p', {style: {marginLeft: '5px'}}, post.body)
+		if (this.state.posts) {
+			var postItemElements = this.state.posts
+				.map(function(post, index) {
+					var date = moment(post.date).format('MM[/]DD[/]YYYY');
+					return React.createElement('li', {
+							key: index,
+							style: {listStyleType: 'none'}},
+						React.createElement('h1', {className: 'title', style: style}, 
+							React.createElement('a', {href: window.location.href + '/' + post.title_slug}, post.title)),
+						React.createElement('h5', {style: {marginBottom: '25px'}}, date)
+					)
+				});
+			return (
+				React.createElement('div', {style: {marginLeft: '75px'}},
+					React.createElement('ul', {}, postItemElements)
 				)
-			});
-
-		return(
-
-			React.createElement('div', {style: {marginLeft: '75px'}},
-				React.createElement('ul', {}, postItemElements)
-			)
-		)
+			);
+		}
+		return null;
 	}
 });
 

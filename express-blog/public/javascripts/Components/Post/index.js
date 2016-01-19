@@ -32,7 +32,7 @@ var Post = React.createClass({
 	},
 
 	rawMarkup: function() {
-	    var rawMarkup = marked(this.state.post.body || '', {sanitize: true});
+	    var rawMarkup = marked(this.state.post.body, {sanitize: true});
 	    return { __html: rawMarkup };
 	 },
 

@@ -40,7 +40,7 @@ webpackJsonp([4,8],[
 		},
 
 		rawMarkup: function rawMarkup() {
-			var rawMarkup = marked(this.state.post.body || '', { sanitize: true });
+			var rawMarkup = marked(this.state.post.body, { sanitize: true });
 			return { __html: rawMarkup };
 		},
 
