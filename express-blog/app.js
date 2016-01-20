@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcryptjs');
 var session = require('client-sessions');
+var methodOverride = require('method-override');
 
 // User model for middleware
 var mongoose = require('mongoose');
@@ -29,6 +30,8 @@ var swig = new swig.Swig();
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
+
+app.use(methodOverride('_method'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

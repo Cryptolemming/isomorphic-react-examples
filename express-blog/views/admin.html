@@ -15,12 +15,6 @@
 		</form> 
 	</div>
 
-	<script>
-		//CKEDITOR.replace( 'content' );
-
-		// var content = CKEDITOR.instances.content.getData();
-	</script>
-
 	</br>
 
 	<div class='form songs-form'>
@@ -41,7 +35,7 @@
 
 	<div class='form projects-form'>
 		<h2>Projects</h2>
-		<form method='post' action'/admin/dashboard'>
+		<form method='post' id='project' action'/admin/dashboard'>
 			<input type='hidden' name= '_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
 			<input type='text' name='projectName'></br>
@@ -50,8 +44,18 @@
 			<label>Languages</label>
 			<input type='text' name='languages'></br>
 			<label>Summary</label>
-			<input type='text' name='summary'></br>
+			<textarea name='body' form='project'></textarea></br>
 			<button type='submit'>Save</button>
 		</form> 
 	</div>
+
+	</br>
+
+	<div id='posts'></div>
+	
+	<script src='/javascripts/dist/Posts.js'></script>
+
+	<div id='projects'</div>
+
+  <script src='/javascripts/dist/Projects.js'></script>
 {% endblock %}

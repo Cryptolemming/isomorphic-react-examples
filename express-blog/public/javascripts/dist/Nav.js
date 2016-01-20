@@ -10,7 +10,6 @@ webpackJsonp([3,8],[
 		getInitialState: function getInitialState() {
 			return {
 				navItems: {
-					'home': true,
 					'posts': false,
 					'music': false,
 					'projects': false,
@@ -19,11 +18,18 @@ webpackJsonp([3,8],[
 			};
 		},
 
+		modifyIndex: function modifyIndex() {
+			if (this.value === 'home') {
+				return this.value = '';
+			};
+		},
+
 		render: function render() {
 			var navObject = this.state.navItems;
 			// map over state navItems and create the nav ul
 			var navItemElements = Object.keys(navObject).map(function (value, index) {
-				return React.createElement('li', { key: index,
+				return React.createElement('li', {
+					key: index,
 					style: {
 						listStyleType: 'none',
 						display: 'inline',

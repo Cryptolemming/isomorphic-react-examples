@@ -85,6 +85,27 @@ router
 		}
 	})
 
+	.get('/dashboard/:title_slug', function(req, res) {
+		var query = {'title_slug': req.params.title_slug};
+		Post.findOne(query, function(err, post) {
+			console.log(post);
+			res.render('admin',
+				{
+					postTitle: post.title
+				}
+			);
+		});
+	})
+
+	.put('/dashboard/:title_slug', function(req, res) {
+		var query = {'title_slug': req.params.title_slug};
+		var update = {'title': req.params.title, 'body': req.params.body};
+		var options = {new: true};
+		Post.findOneAndUpdate(query, update, options, function(err, post) {
+			res.render('post');
+		});
+	})
+
 	// Logout
 	.get('/logout', function(req, res) {
 		req.session.reset();
