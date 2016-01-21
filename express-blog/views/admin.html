@@ -8,9 +8,9 @@
 		<form method='post' id='post' action'/admin/dashboard'>
 			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
-			<input type='text' name='postTitle'></br>
+			<input type='text' name='postTitle' value='{{title}}'></br>
 			<label>Body</label>
-			<textarea name='body' form='post'></textarea></br>
+			<textarea name='body' form='post'>{{body}}</textarea></br>
 			<button type='submit'>Save</button>
 		</form> 
 	</div>

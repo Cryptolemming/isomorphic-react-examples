@@ -88,11 +88,7 @@ router
 	.get('/dashboard/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
-			console.log(post);
-			res.render('admin',
-				{
-					postTitle: post.title
-				}
+			res.render('admin'
 			);
 		});
 	})
@@ -102,7 +98,19 @@ router
 		var update = {'title': req.params.title, 'body': req.params.body};
 		var options = {new: true};
 		Post.findOneAndUpdate(query, update, options, function(err, post) {
-			res.render('post');
+			res.render('admin', 
+				{
+					title: req.body.params.title,
+					body: req.body.params.body
+				}
+			);
+		});
+	})
+
+	.delete('/dashboard/:title_slug', function(req, res) {
+		var query = {'title_slug': req.params.title_slug};
+		Post.findOneAndRemove(query, function(err, post) {
+			res.redirect('/admin');
 		});
 	})
 
