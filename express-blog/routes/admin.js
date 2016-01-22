@@ -88,8 +88,7 @@ router
 	.get('/dashboard/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
-			res.render('admin'
-			);
+			res.render('admin', {title: post.title, body: post.body});
 		});
 	})
 
@@ -100,8 +99,8 @@ router
 		Post.findOneAndUpdate(query, update, options, function(err, post) {
 			res.render('admin', 
 				{
-					title: req.body.params.title,
-					body: req.body.params.body
+					title: post.title,
+					body: post.body
 				}
 			);
 		});

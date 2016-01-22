@@ -17,6 +17,34 @@
 
 	</br>
 
+	<div class='form posts-form'>
+		<h2>Posts</h2>
+		<form method='post' id='post' action'/admin/dashboard/{{post.title_slug}}?_method=PUT'>
+			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
+			<label>Title</label>
+			<input type='text' name='postTitle' value='{{title}}'></br>
+			<label>Body</label>
+			<textarea name='body' form='post'>{{body}}</textarea></br>
+			<button type='submit'>Update</button>
+		</form> 
+	</div>
+
+	</br>
+
+	<div class='form posts-form'>
+		<h2>Posts</h2>
+		<form method='post' id='post' action'/admin/dashboard/{{post.title_slug}}?_method=DELETE'>
+			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
+			<label>Title</label>
+			<input type='text' name='postTitle' value='{{title}}'></br>
+			<label>Body</label>
+			<textarea name='body' form='post'>{{body}}</textarea></br>
+			<button type='submit'>Delete</button>
+		</form> 
+	</div>
+
+	</br>
+
 	<div class='form songs-form'>
 		<h2>Songs</h2>
 		<form method='post' action'/admin/dashboard'>
