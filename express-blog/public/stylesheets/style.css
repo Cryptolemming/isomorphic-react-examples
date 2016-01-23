@@ -4,10 +4,9 @@ html {
 }
 
 body {
-  margin: 0 10vw;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: rgba(0,0,0,.8);
-  background: #fbfbfb
+  background: green;
 }
 
 a {

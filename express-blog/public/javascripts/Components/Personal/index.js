@@ -10,8 +10,14 @@ var Personal = React.createClass({
 	render: function() {
 		
 		return(
-			React.createElement('div', {style: {float: 'left'}}, 
-				React.createElement('span', {}, 'personal')
+			React.createElement('div', {style: 
+				{
+					float: 'left',
+					background: 'red',
+					padding: 2+'vw',
+					maxWidth: '120px',
+				}}, 
+				React.createElement('span', {}, 'personal personal personal')
 			)
 		)
 	}

@@ -15,7 +15,12 @@ webpackJsonp([4,9],[
 
 		render: function render() {
 
-			return React.createElement('div', { style: { float: 'left' } }, React.createElement('span', {}, 'personal'));
+			return React.createElement('div', { style: {
+					float: 'left',
+					background: 'red',
+					padding: 2 + 'vw',
+					maxWidth: '120px'
+				} }, React.createElement('span', {}, 'personal personal personal'));
 		}
 	});
 

@@ -33,11 +33,12 @@ webpackJsonp([3,9],[
 					style: {
 						listStyleType: 'none',
 						display: 'inline',
-						marginRight: '5px'
+						marginRight: '5px',
+						fontSize: '18px'
 					} }, React.createElement('a', { href: 'http://localhost:3000/' + value }, value));
 			});
 
-			return React.createElement('div', { style: { marginLeft: '75px' } }, React.createElement('ul', {}, navItemElements));
+			return React.createElement('div', { style: { marginLeft: 10 + 'vw' } }, React.createElement('ul', {}, navItemElements));
 		}
 	});
 

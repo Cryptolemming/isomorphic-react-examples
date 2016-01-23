@@ -39,7 +39,7 @@ webpackJsonp([6,9],[
 						key: index,
 						style: { listStyleType: 'none' } }, React.createElement('h1', { className: 'title', style: style }, React.createElement('a', { href: window.location.href + '/' + post.title_slug }, post.title)), React.createElement('h5', { style: { marginBottom: '25px' } }, date));
 				});
-				return React.createElement('div', { style: { marginLeft: '75px' } }, React.createElement('ul', {}, postItemElements));
+				return React.createElement('div', { style: { marginLeft: 10 + 'vw' } }, React.createElement('ul', {}, postItemElements));
 			}
 			return null;
 		}

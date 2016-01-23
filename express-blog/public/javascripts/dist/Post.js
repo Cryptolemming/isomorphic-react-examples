@@ -48,7 +48,7 @@ webpackJsonp([5,9],[
 			if (this.state.post) {
 				var post = this.state.post;
 				var date = moment(post.date).format('MM[/]DD[/]YYYY');
-				return React.createElement('div', { style: { marginLeft: '115px' } }, React.createElement('h1', { style: { marginTop: '50px' } }, post.title), React.createElement('h5', { style: { marginBottom: '25px' } }, date), React.createElement('span', { dangerouslySetInnerHTML: this.rawMarkup() }));
+				return React.createElement('div', { style: { marginLeft: 10 + 'vw' } }, React.createElement('h1', { style: { marginTop: '50px', fontSize: '35px' } }, post.title), React.createElement('h5', { style: { marginBottom: '25px' } }, date), React.createElement('span', { dangerouslySetInnerHTML: this.rawMarkup() }));
 			}
 			return null;
 		}
