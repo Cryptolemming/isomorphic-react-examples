@@ -27,7 +27,7 @@ h1 {
 }
 
 #content {
-  float:  left;
   word-break: break-all;
-  display: inline-block;
+  margin-left: 230px;
+  width: 1200px;
 }

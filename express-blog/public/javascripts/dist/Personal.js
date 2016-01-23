@@ -18,8 +18,12 @@ webpackJsonp([4,9],[
 			return React.createElement('div', { style: {
 					float: 'left',
 					background: 'red',
-					padding: 2 + 'vw',
-					height: 100 + 'vh'
+					height: 100 + 'vh',
+					width: 200 + 'px',
+					paddingTop: 5 + 'px',
+					paddingLeft: 15 + 'px',
+					paddingRight: 15 + 'px',
+					textAlign: 'center'
 				} }, React.createElement('span', {}, 'personal personal personal'));
 		}
 	});
