@@ -109,7 +109,7 @@ router
 	.delete('/dashboard/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOneAndRemove(query, function(err, post) {
-			res.redirect('/admin');
+			res.redirect('');
 		});
 	})
 

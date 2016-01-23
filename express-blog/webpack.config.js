@@ -13,6 +13,7 @@ module.exports = {
 		About: './public/javascripts/Components/About/index.js',
 		Home: './public/javascripts/Components/Home/index.js',
 		Nav: './public/javascripts/Components/Nav/index.js',
+		Personal: './public/javascripts/Components/Personal/index.js'
 	},
 	output: {
 		path: './public/javascripts/dist',
