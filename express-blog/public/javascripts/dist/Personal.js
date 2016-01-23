@@ -19,7 +19,7 @@ webpackJsonp([4,9],[
 					float: 'left',
 					background: 'red',
 					padding: 2 + 'vw',
-					maxWidth: '120px'
+					height: 100 + 'vh'
 				} }, React.createElement('span', {}, 'personal personal personal'));
 		}
 	});

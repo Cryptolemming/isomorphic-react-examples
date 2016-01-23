@@ -35,7 +35,7 @@ var Nav = React.createClass({
 		});
 
 		return (
-			React.createElement('div', {style: {marginLeft: 10+'vw'}}, 
+			React.createElement('div', {style: {background: 'yellow'}}, 
 				React.createElement('ul', {}, navItemElements)
 			)
 		)

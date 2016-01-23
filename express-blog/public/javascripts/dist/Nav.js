@@ -38,7 +38,7 @@ webpackJsonp([3,9],[
 					} }, React.createElement('a', { href: 'http://localhost:3000/' + value }, value));
 			});
 
-			return React.createElement('div', { style: { marginLeft: 10 + 'vw' } }, React.createElement('ul', {}, navItemElements));
+			return React.createElement('div', { style: { background: 'yellow' } }, React.createElement('ul', {}, navItemElements));
 		}
 	});
 
