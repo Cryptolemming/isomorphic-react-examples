@@ -23,8 +23,9 @@ webpackJsonp([4,9],[
 					paddingTop: 5 + 'px',
 					paddingLeft: 15 + 'px',
 					paddingRight: 15 + 'px',
-					textAlign: 'center'
-				} }, React.createElement('span', {}, 'personal personal personal'));
+					textAlign: 'center',
+					wordBreak: 'break-all'
+				} }, React.createElement('span', {}, 'personal personal personal dsdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfsdfdsfdsfds'));
 		}
 	});
 

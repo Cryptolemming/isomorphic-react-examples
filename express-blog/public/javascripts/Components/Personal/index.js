@@ -20,8 +20,9 @@ var Personal = React.createClass({
 					paddingLeft: 15+'px',
 					paddingRight: 15+'px',
 					textAlign: 'center',
+					wordBreak: 'break-all',
 				}}, 
-				React.createElement('span', {}, 'personal personal personal')
+				React.createElement('span', {}, 'personal personal personal dsdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfsdfdsfdsfds')
 			)
 		)
 	}

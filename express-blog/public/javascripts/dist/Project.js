@@ -36,7 +36,7 @@ webpackJsonp([7,9],[
 			if (this.state.project) {
 				var project = this.state.project;
 				var date = moment(project.date).format('MM[/]DD[/]YYYY');
-				return React.createElement('div', { style: { marginLeft: '115px' } }, React.createElement('h1', { style: { marginTop: '50px' } }, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginLeft: '5px' } }), React.createElement('p', {
+				return React.createElement('div', { style: { background: 'orange' } }, React.createElement('h1', { style: { marginTop: '50px' } }, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginLeft: '5px' } }), React.createElement('p', {
 					style: {
 						opacity: '.8',
 						fontSize: '10px'

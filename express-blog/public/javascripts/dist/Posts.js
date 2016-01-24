@@ -37,7 +37,7 @@ webpackJsonp([6,9],[
 					var date = moment(post.date).format('MM[/]DD[/]YYYY');
 					return React.createElement('li', {
 						key: index,
-						style: { listStyleType: 'none' } }, React.createElement('h1', { className: 'title', style: style }, React.createElement('a', { href: window.location.href + '/' + post.title_slug }, post.title)), React.createElement('h5', { style: { marginBottom: '25px' } }, date));
+						style: { listStyleType: 'none' } }, React.createElement('h1', { className: 'title', style: { marginTop: '50px', fontSize: '35px' } }, React.createElement('a', { href: window.location.href + '/' + post.title_slug }, post.title)), React.createElement('h5', { style: { marginBottom: '25px' } }, date));
 				});
 				return React.createElement('div', { style: { background: 'orange' } }, React.createElement('ul', {}, postItemElements));
 			}
@@ -46,11 +46,6 @@ webpackJsonp([6,9],[
 	});
 
 	ReactDOM.render(React.createElement(Posts, { source: 'http://localhost:3000/api/posts' }), document.getElementById('posts'));
-
-	var style = {
-		marginTop: '50px',
-		fontSize: '35px'
-	};
 
 /***/ },
 /* 1 */

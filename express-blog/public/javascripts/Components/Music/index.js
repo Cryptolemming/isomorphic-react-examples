@@ -36,7 +36,7 @@ var Music = React.createClass({
 				});
 
 			return(
-				React.createElement('div', {style: {marginLeft: '75px'}},
+				React.createElement('div', {style: {background: 'orange'}},
 					React.createElement('ul', {}, musicItemElements)
 				)
 			);

@@ -1,5 +1,6 @@
 var moment = require('moment');
 var marked = require('marked');
+import Styles from '.././stylesheets/styles.js';
 
 'use strict';
 
@@ -31,7 +32,7 @@ var Posts = React.createClass({
 					return React.createElement('li', {
 							key: index,
 							style: {listStyleType: 'none'}},
-						React.createElement('h1', {className: 'title', style: style}, 
+						React.createElement('h1', {className: 'title', style: {marginTop: '50px', fontSize: '35px'}}, 
 							React.createElement('a', {href: window.location.href + '/' + post.title_slug}, post.title)),
 						React.createElement('h5', {style: {marginBottom: '25px'}}, date)
 					)
@@ -50,8 +51,3 @@ ReactDOM.render(
 	React.createElement(Posts, {source: 'http://localhost:3000/api/posts'}),
 	document.getElementById('posts')
 );
-
-var style = {
-	marginTop: '50px',
-	fontSize: '35px'
-};
