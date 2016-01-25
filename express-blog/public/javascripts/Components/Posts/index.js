@@ -2,6 +2,7 @@ import moment from 'moment';
 import marked from 'marked';
 import Radium from 'radium';
 import styles from '../../../stylesheets/styles.js';
+import FontAwesome from 'react-fontawesome';
 
 'use strict';
 

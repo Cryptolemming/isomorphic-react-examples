@@ -88,28 +88,49 @@ router
 	.get('/dashboard/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
-			res.render('admin', {title: post.title, body: post.body});
+			if (err)
+				console.log(err);
+			else if (!post)
+				console.log('not found');
+			else
+				res.render('admin', {title: post.title, body: post.body, title_slug: post.title_slug});
 		});
 	})
 
 	.put('/dashboard/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
-		var update = {'title': req.params.title, 'body': req.params.body};
-		var options = {new: true};
-		Post.findOneAndUpdate(query, update, options, function(err, post) {
-			res.render('admin', 
-				{
-					title: post.title,
-					body: post.body
-				}
-			);
+		Post.findOne(query, function(err, post) {
+			if (err)
+				console.log(err);
+			else if (!post)
+				console.log('not found');
+			else 
+				post.title = req.body.postTitle;
+				post.save(function(err) {
+					if(err)
+						console.log(err);
+					else
+						res.redirect('/admin/dashboard/' + post.title_slug);
+				});
 		});
 	})
 
 	.delete('/dashboard/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
-		Post.findOneAndRemove(query, function(err, post) {
-			res.redirect('');
+		Post.findOne(query, function(err, post) {
+			if (!post) {
+				console.log('not found');
+			}
+			else {
+			 	post.remove(function(err) {
+					if(err) {
+						console.log(err);
+					}
+					else {
+						console.log('ok');
+					}
+				});
+			}
 		});
 	})
 

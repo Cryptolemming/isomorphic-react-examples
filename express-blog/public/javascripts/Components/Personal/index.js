@@ -1,3 +1,5 @@
+import FontAwesome from 'react-fontawesome';
+
 'use strict';
 
 var Personal = React.createClass({
@@ -22,7 +24,8 @@ var Personal = React.createClass({
 					textAlign: 'center',
 					wordBreak: 'break-all',
 				}}, 
-				React.createElement('span', {}, 'personal personal personal dsdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfsdfdsfdsfds')
+				React.createElement('span', {}, 'personal personal personal dsdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfsdfdsfdsfds'),
+				React.createElement('FontAwesome', {name: 'rocket', style: {fontSize: 105, color: 'green'}})
 			)
 		)
 	}
