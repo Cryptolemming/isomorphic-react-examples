@@ -25,18 +25,18 @@ webpackJsonp([7,9],[
 		},
 
 		componentDidMount: function componentDidMount() {
-			$.get(this.props.source, (function (result) {
+			$.get(this.props.source, function (result) {
 				if (this.isMounted()) {
 					this.setState({ project: result });
 				}
-			}).bind(this));
+			}.bind(this));
 		},
 
 		render: function render() {
 			if (this.state.project) {
 				var project = this.state.project;
 				var date = moment(project.date).format('MM[/]DD[/]YYYY');
-				return React.createElement('div', { style: { background: 'orange' } }, React.createElement('h1', { style: { marginTop: '50px' } }, project.name), React.createElement('h5', { style: { marginBottom: '15px' } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginLeft: '5px' } }), React.createElement('p', {
+				return React.createElement('div', { style: { background: 'orange' } }, React.createElement('h1', { style: { marginTop: '50px' } }, project.name), React.createElement('h5', { style: { marginBottom: '15px', fontSize: 15 } }, date), React.createElement('img', { src: project.picture, style: { width: '250px', marginLeft: '5px' } }), React.createElement('p', {
 					style: {
 						opacity: '.8',
 						fontSize: '10px'

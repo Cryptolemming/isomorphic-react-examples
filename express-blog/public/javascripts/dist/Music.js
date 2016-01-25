@@ -22,11 +22,11 @@ webpackJsonp([2,9],[
 		},
 
 		componentDidMount: function componentDidMount() {
-			$.get(this.props.source, (function (result) {
+			$.get(this.props.source, function (result) {
 				if (this.isMounted()) {
 					this.setState({ music: result });
 				}
-			}).bind(this));
+			}.bind(this));
 		},
 
 		render: function render() {
@@ -35,10 +35,15 @@ webpackJsonp([2,9],[
 					var date = moment(song.date).format('MM-DD-YYYY');
 					return React.createElement('li', {
 						key: index,
-						style: { listStyleType: 'none' } }, React.createElement('h1', { style: { marginTop: '50px' } }, song.artist + ': ' + song.title), React.createElement('h5', { style: { marginBottom: '25px' } }, date), React.createElement('iframe', { src: song.link, style: { marginLeft: '5px', marginBottom: '50px' } }));
+						style: {} }, React.createElement('h1', { style: { marginTop: '50px' } }, song.artist + ': ' + song.title), React.createElement('h5', { style: { marginBottom: '25px', fontSize: 15 } }, date), React.createElement('iframe', { src: song.link, style: { marginLeft: '5px', marginBottom: '50px' } }));
 				});
 
-				return React.createElement('div', { style: { background: 'orange' } }, React.createElement('ul', {}, musicItemElements));
+				return React.createElement('div', { style: { paddingLeft: 45, background: 'orange' } }, React.createElement('ul', {
+					style: {
+						listStyleType: 'none',
+						padding: 0,
+						margin: 0
+					} }, musicItemElements));
 			};
 			return null;
 		}

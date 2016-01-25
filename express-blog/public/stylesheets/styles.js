@@ -1,9 +1,7 @@
-var styles = {
-	entry: {
-		title: {
-			fontSize: 55,
-		}
+var Styles = {
+	title: {
+		fontSize: 35,
 	}
 };
 
-module.exports = styles;
+module.exports = Styles;

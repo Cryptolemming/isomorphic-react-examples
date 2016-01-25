@@ -14,11 +14,11 @@ webpackJsonp([1,9],[
 	  },
 
 	  componentDidMount: function componentDidMount() {
-	    $.get(this.props.source, (function (result) {
+	    $.get(this.props.source, function (result) {
 	      if (this.isMounted()) {
 	        this.setState({ source: result });
 	      }
-	    }).bind(this));
+	    }.bind(this));
 	  },
 
 	  render: function render() {

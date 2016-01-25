@@ -1,10 +1,11 @@
-var moment = require('moment');
-var marked = require('marked');
-import Styles from '.././stylesheets/styles.js';
+import moment from 'moment';
+import marked from 'marked';
+import Radium from 'radium';
+import styles from '../../../stylesheets/styles.js';
 
 'use strict';
 
-var Posts = React.createClass({
+var Posts = Radium(React.createClass({
 	propTypes: {
 		source: React.PropTypes.string.isRequired,
 	},
@@ -31,21 +32,30 @@ var Posts = React.createClass({
 					var date = moment(post.date).format('MM[/]DD[/]YYYY');
 					return React.createElement('li', {
 							key: index,
-							style: {listStyleType: 'none'}},
-						React.createElement('h1', {className: 'title', style: {marginTop: '50px', fontSize: '35px'}}, 
+							style: 
+								{
+									
+								}},
+						React.createElement('h1', {style: {marginTop: 50, fontSize: 35}}, 
 							React.createElement('a', {href: window.location.href + '/' + post.title_slug}, post.title)),
-						React.createElement('h5', {style: {marginBottom: '25px'}}, date)
+						React.createElement('h5', {style: {marginBottom: 50, fontSize: 15}}, date)
 					)
 				});
 			return (
-				React.createElement('div', {style: {background: 'orange'}},
-					React.createElement('ul', {}, postItemElements)
+				React.createElement('div', {style: {paddingLeft: 45, background: 'orange'}},
+					React.createElement('ul', {
+							style: 
+								{
+									listStyleType: 'none',
+									padding: 0,
+									margin: 0,
+								}}, postItemElements)
 				)
 			);
 		}
 		return null;
 	}
-});
+}));
 
 ReactDOM.render(
 	React.createElement(Posts, {source: 'http://localhost:3000/api/posts'}),
