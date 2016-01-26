@@ -33,7 +33,7 @@
 
 	<div class='form posts-form'>
 		<h2>Posts</h2>
-		<form method='POST' id='post' action='/admin/dashboard/{{post.title_slug}}?_method=DELETE'>
+		<form method='POST' id='post' action='/admin/dashboard/{{title_slug}}?_method=DELETE'>
 			<label>Title</label>
 			<input type='text' name='postTitle' value='{{title}}'></br>
 			<label>Body</label>
@@ -77,6 +77,10 @@
 	</div>
 
 	</br>
-
+	
+	<div id='posts'></div>
+	<div id='projects'</div>
+  <script src='/javascripts/dist/Projects.js'></script>
+  <script src='/javascripts/dist/Posts.js'></script>
 
 {% endblock %}

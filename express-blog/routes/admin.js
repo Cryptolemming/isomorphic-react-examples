@@ -106,6 +106,7 @@ router
 				console.log('not found');
 			else 
 				post.title = req.body.postTitle;
+				post.body = req.body.body;
 				post.save(function(err) {
 					if(err)
 						console.log(err);
@@ -127,7 +128,7 @@ router
 						console.log(err);
 					}
 					else {
-						console.log('ok');
+						res.redirect('/admin/dashboard/');
 					}
 				});
 			}
