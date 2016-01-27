@@ -85,13 +85,13 @@ router
 		}
 	})
 
-	.get('/dashboard/:title_slug', function(req, res) {
+	.get('/dashboard/posts/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
 			if (err)
 				console.log(err);
 			else if (!post)
-				console.log('not found');
+				console.log('not found get');
 			else
 				res.render('admin', {title: post.title, body: post.body, title_slug: post.title_slug});
 		});
@@ -103,7 +103,7 @@ router
 			if (err)
 				console.log(err);
 			else if (!post)
-				console.log('not found');
+				console.log('not found put');
 			else 
 				post.title = req.body.postTitle;
 				post.body = req.body.body;
@@ -120,7 +120,7 @@ router
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
 			if (!post) {
-				console.log('not found');
+				console.log('not found delete');
 			}
 			else {
 			 	post.remove(function(err) {

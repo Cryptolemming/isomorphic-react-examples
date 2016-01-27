@@ -15,17 +15,17 @@ var Personal = React.createClass({
 			React.createElement('div', {style: 
 				{
 					float: 'left',
-					background: 'red',
-					height: 100+'vh',
-					width: 200+'px',
-					paddingTop: 5+'px',
-					paddingLeft: 15+'px',
-					paddingRight: 15+'px',
+					height: 100,
+					width: 200,
+					paddingTop: 5,
+					paddingLeft: 15,
+					paddingRight: 15,
+					marginRight: 35,
 					textAlign: 'center',
 					wordBreak: 'break-all',
 				}}, 
 				React.createElement('span', {}, 'personal personal personal dsdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfsdfdsfdsfds'),
-				React.createElement('FontAwesome', {name: 'rocket', style: {fontSize: 105, color: 'green'}})
+				React.createElement('FontAwesome', {name: 'rocket', style: {fontSize: 55, color: 'green'}})
 			)
 		)
 	}

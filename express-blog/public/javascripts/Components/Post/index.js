@@ -41,7 +41,7 @@ var Post = React.createClass({
 			var post = this.state.post;
 			var date = moment(post.date).format('MM[/]DD[/]YYYY');
 			return (
-				React.createElement('div', {style: {paddingLeft: '45px', background: 'orange'}},
+				React.createElement('div', {style: {paddingLeft: '45px'}},
 					React.createElement('h1', {style: {marginTop: 50, fontSize: '35px'}}, post.title),
 					React.createElement('h5', {style: {marginBottom: '25px', fontSize: 15}}, date),
 					React.createElement('span', {dangerouslySetInnerHTML: this.rawMarkup()})

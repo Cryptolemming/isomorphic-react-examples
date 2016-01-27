@@ -28,21 +28,22 @@ var Projects = React.createClass({
 					var date = moment(project.date).format('MM-DD-YYYY');
 					return React.createElement('li', {
 							key: index,
-							style: {}},
+							style: {}
+						},
 						React.createElement('a', {href: window.location.href + '/' + project.name_slug},
-							React.createElement('h1', {style: {marginTop: '50px', fontSize: '35px'}}, project.name)),
-						React.createElement('h5', {style: {marginBottom: '25px', fontSize: 15}}, date),
+							React.createElement('h1', {style: {marginTop: 50, fontSize: 35}}, project.name)),
+						React.createElement('h5', {style: {marginBottom: 25, fontSize: 15}}, date),
 						React.createElement('img', {src: project.picture, style: {width: '250px', marginLeft: '5px'}}),
 						React.createElement('p', {
 								style: {
 									opacity: '.8',
 									fontSize: '10px',
 								}}, project.languages),
-						React.createElement('p', {style: {marginLeft: '5px', marginBottom: '25px', marginTop: '25px'}}, project.summary)
+						React.createElement('p', {style: {marginLeft: '5px', marginBottom: 50, marginTop: '25px'}}, project.summary)
 					)
 				});
 			return(
-				React.createElement('div', {style: {paddingLeft: 45, background: 'orange'}},
+				React.createElement('div', {style: {paddingLeft: 45}},
 					React.createElement('ul', {
 								style: {
 									listStyleType: 'none',

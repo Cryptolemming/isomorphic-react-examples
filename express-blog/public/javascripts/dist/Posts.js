@@ -60,7 +60,7 @@ webpackJsonp([6,9],[
 						key: index,
 						style: {} }, React.createElement('h1', { style: { marginTop: 50, fontSize: 35 } }, React.createElement('a', { href: window.location.href + '/' + post.title_slug }, post.title)), React.createElement('h5', { style: { marginBottom: 50, fontSize: 15 } }, date));
 				});
-				return React.createElement('div', { style: { paddingLeft: 45, background: 'orange' } }, React.createElement('ul', {
+				return React.createElement('div', { style: { paddingLeft: 45 } }, React.createElement('ul', {
 					style: {
 						listStyleType: 'none',
 						padding: 0,

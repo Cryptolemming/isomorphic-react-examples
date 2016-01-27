@@ -43,7 +43,7 @@ var Posts = Radium(React.createClass({
 					)
 				});
 			return (
-				React.createElement('div', {style: {paddingLeft: 45, background: 'orange'}},
+				React.createElement('div', {style: {paddingLeft: 45}},
 					React.createElement('ul', {
 							style: 
 								{
