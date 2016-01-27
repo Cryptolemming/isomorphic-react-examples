@@ -15,7 +15,7 @@ webpackJsonp([0,9],[
 
 		render: function render() {
 
-			return React.createElement('div', {}, 'About Page');
+			return React.createElement('div', { style: { marginTop: 50, paddingLeft: 45 } }, 'About Page');
 		}
 	});
 

@@ -58,7 +58,7 @@ webpackJsonp([6,9],[
 					var date = (0, _moment2.default)(post.date).format('MM[/]DD[/]YYYY');
 					return React.createElement('li', {
 						key: index,
-						style: {} }, React.createElement('h1', { style: { marginTop: 50, fontSize: 35 } }, React.createElement('a', { href: window.location.href + '/' + post.title_slug }, post.title)), React.createElement('h5', { style: { marginBottom: 50, fontSize: 15 } }, date));
+						style: {} }, React.createElement('h1', { style: { marginTop: 50, fontSize: 35 } }, React.createElement('a', { href: window.location.href + '/' + post.title_slug }, post.title)), React.createElement('FontAwesome', { name: 'rocket', style: { fontSize: 55, color: 'green' } }), React.createElement('h5', { style: { marginBottom: 50, fontSize: 15 } }, date));
 				});
 				return React.createElement('div', { style: { paddingLeft: 45 } }, React.createElement('ul', {
 					style: {

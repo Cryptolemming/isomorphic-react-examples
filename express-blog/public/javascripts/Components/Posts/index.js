@@ -39,6 +39,7 @@ var Posts = Radium(React.createClass({
 								}},
 						React.createElement('h1', {style: {marginTop: 50, fontSize: 35}}, 
 							React.createElement('a', {href: window.location.href + '/' + post.title_slug}, post.title)),
+						React.createElement('FontAwesome', {name: 'rocket', style: {fontSize: 55, color: 'green'}}),
 						React.createElement('h5', {style: {marginBottom: 50, fontSize: 15}}, date)
 					)
 				});

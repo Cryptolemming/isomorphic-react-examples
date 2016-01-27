@@ -38,7 +38,7 @@ webpackJsonp([2,9],[
 						style: {} }, React.createElement('h1', { style: { marginTop: '50px' } }, song.artist + ': ' + song.title), React.createElement('h5', { style: { marginBottom: '25px', fontSize: 15 } }, date), React.createElement('iframe', { src: song.link, style: { marginLeft: '5px', marginBottom: '50px' } }));
 				});
 
-				return React.createElement('div', { style: { paddingLeft: 45, background: 'orange' } }, React.createElement('ul', {
+				return React.createElement('div', { style: { paddingLeft: 45 } }, React.createElement('ul', {
 					style: {
 						listStyleType: 'none',
 						padding: 0,

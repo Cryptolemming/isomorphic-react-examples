@@ -35,7 +35,12 @@ webpackJsonp([4,9],[
 					marginRight: 35,
 					textAlign: 'center',
 					wordBreak: 'break-all'
-				} }, React.createElement('span', {}, 'personal personal personal dsdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfdsfsdfdsfdsfds'), React.createElement('FontAwesome', { name: 'rocket', style: { fontSize: 55, color: 'green' } }));
+				} }, React.createElement('img', { src: 'https://dl.dropboxusercontent.com/s/ss1o0lsvvoaj1fy/aliayoub.jpg?dl=0',
+				style: {
+					width: 120,
+					borderRadius: 50
+				}
+			}), React.createElement('ul', { style: { listStyleType: 'none', padding: 0, margin: 0, marginTop: 25 } }, React.createElement('li', { style: { marginBottom: 15 } }, 'Follow me on ', React.createElement('a', { href: 'twitter' }, 'Twitter')), React.createElement('li', null, 'Have a look at my  ', React.createElement('a', { href: 'github' }, 'Github')), React.createElement('li', null, 'Send me an ', React.createElement('a', { href: 'github' }, 'Email'))));
 		}
 	});
 

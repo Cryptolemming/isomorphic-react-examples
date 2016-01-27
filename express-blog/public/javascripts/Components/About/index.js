@@ -10,7 +10,7 @@ var About = React.createClass({
 	render: function() {
 		
 		return(
-			React.createElement('div', {}, 'About Page')
+			React.createElement('div', {style: {marginTop: 50, paddingLeft: 45}}, 'About Page')
 		)
 	}
 });
