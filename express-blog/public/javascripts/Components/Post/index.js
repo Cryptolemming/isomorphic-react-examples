@@ -43,8 +43,8 @@ var Post = React.createClass({
 			return (
 				React.createElement('div', {style: {paddingLeft: '45px'}},
 					React.createElement('h1', {style: {marginTop: 50, fontSize: '35px'}}, post.title),
-					React.createElement('h5', {style: {marginBottom: '25px', fontSize: 15}}, date),
-					React.createElement('span', {dangerouslySetInnerHTML: this.rawMarkup()})
+					React.createElement('h5', {style: {marginBottom: '50px', fontSize: 13}}, date),
+					React.createElement('span', {dangerouslySetInnerHTML: this.rawMarkup(), style: {marginLeft: 15}})
 				)
 			);
 		 }

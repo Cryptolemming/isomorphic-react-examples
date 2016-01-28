@@ -85,7 +85,7 @@ router
 		}
 	})
 
-	.get('/dashboard/posts/:title_slug', function(req, res) {
+	.get('/dashboard/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
 			if (err)
@@ -106,7 +106,7 @@ router
 				console.log('not found put');
 			else 
 				post.title = req.body.postTitle;
-				post.body = req.body.body;
+				post.body = req.body.editBody;
 				post.save(function(err) {
 					if(err)
 						console.log(err);
