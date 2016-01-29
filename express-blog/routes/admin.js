@@ -105,9 +105,11 @@ router
 			else if (!post)
 				console.log('not found put');
 			else 
-				post.title = req.body.postTitle;
-				post.body = req.body.editBody;
+				post.title = req.body.editPostTitle;
+				post.body = req.body.editPostBody;
+				console.log(post);
 				post.save(function(err) {
+					console.log(post);
 					if(err)
 						console.log(err);
 					else

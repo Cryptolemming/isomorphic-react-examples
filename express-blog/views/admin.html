@@ -19,12 +19,12 @@
 
 	<div class='form posts-form'>
 		<h2>Posts</h2>
-		<form method='POST' id='post' action='/admin/dashboard/{{title_slug}}?_method=PUT'>
+		<form method='post' id='post' action='/admin/dashboard/{{title_slug}}?_method=PUT'>
 			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
-			<input type='text' name='postTitle' value='{{title}}'></br>
+			<input type='text' name='editPostTitle' value='{{title}}'></br>
 			<label>Body</label>
-			<textarea name='editBody' form='post'>{{body}}</textarea></br>
+			<textarea name='editPostBody' form='post'></textarea></br>
 			<button type='submit'>Update</button>
 		</form> 
 	</div>
@@ -33,11 +33,9 @@
 
 	<div class='form posts-form'>
 		<h2>Posts</h2>
-		<form method='POST' id='post' action='/admin/dashboard/{{title_slug}}?_method=DELETE'>
+		<form method='post' id='post' action='/admin/dashboard/{{title_slug}}?_method=DELETE'>
 			<label>Title</label>
-			<input type='text' name='postTitle' value='{{title}}'></br>
-			<label>Body</label>
-			<textarea name='deleteBody' form='post'>{{body}}</textarea></br>
+			<input type='text' name='title' value='{{title}}'></br>
 			<button type='submit'>Delete</button>
 		</form> 
 	</div>
@@ -46,7 +44,7 @@
 
 	<div class='form songs-form'>
 		<h2>Songs</h2>
-		<form method='post' action'/admin/dashboard'>
+		<form method='post' id='song' action'/admin/dashboard'>
 			<input type='hidden' name= '_csrf' value='{{csrfToken}}'>
 			<label>Title</label>
 			<input type='text' name='songTitle'></br>
