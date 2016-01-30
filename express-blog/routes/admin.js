@@ -136,7 +136,7 @@ router
 					if(err)
 						console.log(err);
 					else
-						res.redirect('admin/dashboard/posts/' + post.title_slug);
+						res.redirect('/admin/dashboard/posts/' + post.title_slug);
 				});
 		});
 	})
