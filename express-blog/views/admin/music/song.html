@@ -1,0 +1,24 @@
+{% extends '../../layout.html' %}
+
+{% block content %}
+	<div class='form posts-form'>
+		<h2>Edit Song</h2>
+		<form method='post' id='song' action='/admin/dashboard/music/{{title_slug}}?_method=PUT'>
+			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
+			<label>Title</label>
+			<input type='text' name='title' value='{{title}}'></br>
+			<label>Link</label>
+			<input type='text' name='link' value='{{link}}'></br>
+			<button type='submit'>Update</button>
+		</form> 
+	</div>
+
+	<br>
+
+	<div class='form posts-form'>
+		<h2>Delete Song</h2>
+		<form method='post' id='song' action='/admin/dashboard/music/{{title_slug}}?_method=DELETE'>
+			<button type='submit'>Delete</button>
+		</form> 
+	</div>
+{% endblock %}

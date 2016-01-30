@@ -2,8 +2,8 @@
 
 {% block content %}
 	<div class='form posts-form'>
-		<h2>New Project</h2>
-		<form method='post' id='project' action='/admin/dashboard/projects/new'>
+		<h2>Edit Project</h2>
+		<form method='post' id='project' action='/admin/dashboard/projects/{{name_slug}}?_method=PUT'>
 			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
 			<label>Name</label>
 			<input type='text' name='name' value='{{title}}'></br>
@@ -13,7 +13,16 @@
 			<input type='text' name='languages' value='{{languages}}'></br>
 			<label>Summary</label>
 			<input type='text' name='summary' value='{{summary}}'></br>
-			<button type='submit'>Save</button>
+			<button type='submit'>Update</button>
+		</form> 
+	</div>
+
+	<br>
+
+	<div class='form posts-form'>
+		<h2>Delete Project</h2>
+		<form method='post' id='post' action='/admin/dashboard/projects/{{name_slug}}?_method=DELETE'>
+			<button type='submit'>Delete</button>
 		</form> 
 	</div>
 {% endblock %}
