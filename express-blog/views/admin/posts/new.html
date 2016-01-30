@@ -1,0 +1,15 @@
+{% extends '../../layout.html' %}
+
+{% block content %}
+	<div class='form posts-form'>
+		<h2>New Post</h2>
+		<form method='post' id='post' action='/admin/dashboard/posts/new'>
+			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
+			<label>Title</label>
+			<input type='text' name='title' value='{{title}}'></br>
+			<label>Body</label>
+			<textarea name='body' form='post'>{{body}}</textarea></br>
+			<button type='submit'>Save</button>
+		</form> 
+	</div>
+{% endblock %}

@@ -53,18 +53,11 @@ router
 		});
 	})	
 
-	// Admin dashboard
-	.get('/dashboard', requireLogin, function(req, res) {
-		res.render('admin');
-	})
-
+	/**
 	.post('/dashboard', requireLogin, function(req, res) {
 		// Depending on which form was filled, create new entry and redirect
 		if (req.body.postTitle) {
-			new Post({title: req.body.postTitle, body: req.body.body})
-			.save(function(err, post) {
-				res.redirect('/posts');
-			});
+			
 		} else if (req.body.songTitle) {
 			new Song({title: req.body.songTitle, arist: req.body.artist, link: req.body.link})
 			.save(function(err, song) {
@@ -84,8 +77,38 @@ router
 			res.redirect('/');
 		}
 	})
+**/
 
-	.get('/dashboard/:title_slug', function(req, res) {
+	// Dashboard
+	.get('/dashboard', requireLogin, function(req, res) {
+		res.render('admin/dashboard');
+	})
+
+	// Dashboard Posts
+		// view index
+	.get('/dashboard/posts', function(req, res) {
+		var postData = Post.find().sort({_id: -1});
+		postData.find(function(err, posts) {
+			res.render('admin/posts/index', 
+				{posts: posts}
+			);
+		});
+	})
+
+		// new post
+	.get('/dashboard/posts/new', function(req, res) {
+		res.render('admin/posts/new');
+	})
+
+	.post('/dashboard/posts/new', function(req, res) {
+		new Post({title: req.body.title, body: req.body.body})
+			.save(function(err, post) {
+				res.redirect('/admin/dashboard/posts');
+			});
+	})
+
+		// edit post
+	.get('/dashboard/posts/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
 			if (err)
@@ -93,11 +116,11 @@ router
 			else if (!post)
 				console.log('not found get');
 			else
-				res.render('admin', {title: post.title, body: post.body, title_slug: post.title_slug});
+				res.render('admin/posts/post', {title: post.title, body: post.body, title_slug: post.title_slug});
 		});
 	})
 
-	.put('/dashboard/:title_slug', function(req, res) {
+	.put('/dashboard/posts/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
 			if (err)
@@ -105,20 +128,21 @@ router
 			else if (!post)
 				console.log('not found put');
 			else 
-				post.title = req.body.editPostTitle;
-				post.body = req.body.editPostBody;
+				post.title = req.body.title;
+				post.body = req.body.body;
 				console.log(post);
 				post.save(function(err) {
 					console.log(post);
 					if(err)
 						console.log(err);
 					else
-						res.redirect('/admin/dashboard/' + post.title_slug);
+						res.redirect('admin/dashboard/posts/' + post.title_slug);
 				});
 		});
 	})
 
-	.delete('/dashboard/:title_slug', function(req, res) {
+		// delete post
+	.delete('/dashboard/posts/:title_slug', function(req, res) {
 		var query = {'title_slug': req.params.title_slug};
 		Post.findOne(query, function(err, post) {
 			if (!post) {
@@ -130,14 +154,12 @@ router
 						console.log(err);
 					}
 					else {
-						res.redirect('/admin/dashboard/');
+						res.redirect('/admin/dashboard/posts');
 					}
 				});
 			}
 		});
 	})
-
-	// Dashboard Posts
 	
 
 	// Dashboard Projects

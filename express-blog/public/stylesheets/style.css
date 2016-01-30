@@ -1,17 +1,12 @@
 html {
-	margin-top: 0;
 	background: #fbfbfb;
-  top: 0;
-  border: 0;
 }
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: rgba(0,0,0,.8);
   min-width: 1000px;
-  top: 0;
   margin: 0;
-  border: 1px solid transparent;
 }
 
 a {
@@ -42,4 +37,6 @@ h1 {
   height: 100%;
   overflow: hidden;
   border: 1px solid transparent;
+  color: #fbfbfb;
+  padding: 0;
 }

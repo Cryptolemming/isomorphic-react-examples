@@ -1,0 +1,16 @@
+{% extends '../../layout.html' %}
+
+{% block content %}
+	<a href='posts/new'>New Post</a>
+	<br>
+	<h2>All Posts</h2>
+
+	<ul>
+		{% for post in posts %}
+			<li>
+				<h1>{{post.title}}</h1>
+				<p>{{post.body}}</p>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
