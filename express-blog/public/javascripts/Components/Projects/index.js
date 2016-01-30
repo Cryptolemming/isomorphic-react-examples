@@ -33,7 +33,7 @@ var Projects = React.createClass({
 						React.createElement('a', {href: window.location.href + '/' + project.name_slug},
 							React.createElement('h1', {style: {marginTop: 50, fontSize: 35}}, project.name)),
 						React.createElement('h5', {style: {marginBottom: 25, fontSize: 15}}, date),
-						React.createElement('img', {src: project.picture, style: {width: '250px', marginLeft: '5px'}}),
+						React.createElement('img', {src: project.picture, style: {width: '500px', marginLeft: '5px'}}),
 						React.createElement('p', {
 								style: {
 									opacity: '.8',

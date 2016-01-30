@@ -58,7 +58,7 @@ router
 		res.render('admin');
 	})
 
-	.post('/dashboard', function(req, res) {
+	.post('/dashboard', requireLogin, function(req, res) {
 		// Depending on which form was filled, create new entry and redirect
 		if (req.body.postTitle) {
 			new Post({title: req.body.postTitle, body: req.body.body})
@@ -136,6 +136,15 @@ router
 			}
 		});
 	})
+
+	// Dashboard Posts
+	
+
+	// Dashboard Projects
+	
+
+	// Dashboard Music
+	
 
 	// Logout
 	.get('/logout', function(req, res) {
