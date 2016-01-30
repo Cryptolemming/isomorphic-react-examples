@@ -1,7 +1,8 @@
 html {
-	margin: 0;
+	margin-top: 0;
 	background: #fbfbfb;
   top: 0;
+  border: 0;
 }
 
 body {
@@ -10,6 +11,7 @@ body {
   min-width: 1000px;
   top: 0;
   margin: 0;
+  border: 1px solid transparent;
 }
 
 a {
@@ -25,10 +27,19 @@ a:hover {
 
 h1 {
   font-size: 25px;
+  margin: 0;
 }
 
 #content {
   word-break: break-all;
   margin-left: 230px;
   width: 1200px;
+}
+
+#project {
+  margin-top: 0;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid transparent;
 }

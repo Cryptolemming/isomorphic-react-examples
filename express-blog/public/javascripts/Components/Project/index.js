@@ -29,7 +29,7 @@ var Project = React.createClass({
 			var project = this.state.project;
 			var date = moment(project.date).format('MM[/]DD[/]YYYY');
 			return(
-				React.createElement('div', {style: {top: 0, marginTop: 0, height: '100vh', backgroundImage: "url("+project.picture+")", backgroundSize: 'cover'}},
+				React.createElement('div', {style: {top: 0, marginTop: 0, height: '100vh', backgroundImage: "url("+project.picture+")", backgroundSize: 'cover', border: '0px solid transparent'}},
 					React.createElement('h1', {style: {}}, project.name),
 					React.createElement('h5', {style: {marginBottom: '15px', fontSize: 15}}, date),
 					React.createElement('img', {src: project.picture, style: {width: '250px', marginLeft: '5px'}}),
