@@ -1,0 +1,18 @@
+{% extends '../../layout.html' %}
+
+{% block content %}
+	<a href='projects/new'>New Project</a><a href='/admin/dashboard'>Back</a>
+	<br>
+	<h2>All Projects</h2>
+
+	<ul>
+		{% for project in projects %}
+			<li>
+				<a href='projects/{{project.name_slug}}'><h1>{{project.name}}</h1></a>
+				<img src={{project.picture}} />
+				<p>{{project.languages}}</p>
+				<p>{{project.summary}}</p>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

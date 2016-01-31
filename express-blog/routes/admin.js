@@ -54,7 +54,7 @@ router
 	})	
 
 	// Dashboard
-	.get('/dashboard', requireLogin, function(req, res) {
+	.get('/dashboard/', requireLogin, function(req, res) {
 		res.render('admin/dashboard');
 	})
 

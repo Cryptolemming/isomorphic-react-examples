@@ -1,14 +1,14 @@
 {% extends '../../layout.html' %}
 
 {% block content %}
-	<a href='posts/new'>New Post</a>
+	<a href='posts/new'>New Post</a><a href='/admin/dashboard'>Back</a>
 	<br>
 	<h2>All Posts</h2>
 
 	<ul>
 		{% for post in posts %}
 			<li>
-				<a href={{post.title_slug}}><h1>{{post.title}}</h1></a>
+				<a href='posts/{{post.title_slug}}'><h1>{{post.title}}</h1></a>
 				<p>{{post.body}}</p>
 			</li>
 		{% endfor %}

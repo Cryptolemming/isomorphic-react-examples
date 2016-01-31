@@ -1,0 +1,16 @@
+{% extends '../../layout.html' %}
+
+{% block content %}
+	<a href='music/new'>New Song</a><a href='/admin/dashboard'>Back</a>
+	<br>
+	<h2>All Songs</h2>
+
+	<ul>
+		{% for song in songs %}
+			<li>
+				<a href='music/{{song.title_slug}}'><h1>{{song.title}}</h1></a>
+				<iframe src='{{song.link}}'></iframe>
+			</li>
+		{% endfor %}
+	</ul>	
+{% endblock %}
