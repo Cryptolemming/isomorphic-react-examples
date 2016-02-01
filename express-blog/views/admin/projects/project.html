@@ -6,7 +6,7 @@
 		<form method='post' id='project' action='/admin/dashboard/projects/{{name_slug}}?_method=PUT'>
 			<input type='hidden' name='_csrf' value='{{csrfToken}}'>
 			<label>Name</label>
-			<input type='text' name='name' value='{{title}}'></br>
+			<input type='text' name='name' value='{{name}}'></br>
 			<label>Picture</label>
 			<input type='text' name='picture' value='{{picture}}'></br>
 			<label>Languages</label>
@@ -25,4 +25,8 @@
 			<button type='submit'>Delete</button>
 		</form> 
 	</div>
+
+	<br>
+
+	<a href='/admin/dashboard'>Back</a>
 {% endblock %}

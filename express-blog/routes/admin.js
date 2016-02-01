@@ -178,10 +178,11 @@ router
 			else
 				res.render('admin/projects/project', 
 					{
-						name: req.body.name,
-						picture: req.body.picture,
-						languages: req.body.languages,
-						summary: req.body.summary
+						name: project.name,
+						picture: project.picture,
+						languages: project.languages,
+						summary: project.summary,
+						name_slug: project.name_slug,
 					});
 		});
 	})
@@ -268,7 +269,7 @@ router
 		Song.findOne(query, function(err, song) {
 			if (err)
 				console.log(err);
-			else if (!post)
+			else if (!song)
 				console.log('not found');
 			else 
 				song.title = req.body.title;

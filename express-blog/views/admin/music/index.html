@@ -9,7 +9,7 @@
 		{% for song in songs %}
 			<li>
 				<a href='music/{{song.title_slug}}'><h1>{{song.title}}</h1></a>
-				<iframe src='{{song.link}}'></iframe>
+				<iframe src='https://youtube.com/embed/{{song.link}}?autoplay=0'></iframe>
 			</li>
 		{% endfor %}
 	</ul>	

@@ -71,6 +71,11 @@ projectSchema.pre('save', function (next) {
     next(); 
   });
 
+songSchema.pre('save', function (next) {
+    this.title_slug = slugify(this.title);
+    next(); 
+  });
+
 mongoose.model('users', userSchema);
 mongoose.model('posts', postSchema);
 mongoose.model('songs', songSchema);
