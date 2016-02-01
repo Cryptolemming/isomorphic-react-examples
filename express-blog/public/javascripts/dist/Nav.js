@@ -12,8 +12,7 @@ webpackJsonp([3,9],[
 				navItems: {
 					'posts': false,
 					'music': false,
-					'projects': false,
-					'about': false
+					'projects': false
 				}
 			};
 		},

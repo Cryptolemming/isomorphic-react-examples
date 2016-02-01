@@ -24,12 +24,14 @@ var Personal = React.createClass({
 					textAlign: 'center',
 					wordBreak: 'break-all',
 				}}, 
-				React.createElement('img', {src: 'https://dl.dropboxusercontent.com/s/ss1o0lsvvoaj1fy/aliayoub.jpg?dl=0',
-					style: {
-						width: 120,
-						borderRadius: 50,
-					}
-				}),
+				React.createElement('a', {href: '/'},
+					React.createElement('img', {src: 'https://dl.dropboxusercontent.com/s/ss1o0lsvvoaj1fy/aliayoub.jpg?dl=0',
+						style: {
+							width: 120,
+							borderRadius: 50,
+						}
+					})
+				),
 				React.createElement('ul', {style: {listStyleType: 'none', padding: 0, margin: 0, marginTop: 25}},
 					<li style={{marginBottom: 15}}>Follow me on <a href='twitter'>Twitter</a></li>,
 					<li>Have a look at my  <a href='github'>Github</a></li>,

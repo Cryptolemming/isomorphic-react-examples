@@ -7,7 +7,6 @@ var Nav = React.createClass({
 				'posts': false,
 				'music': false,
 				'projects': false,
-				'about': false,
 			}
 		};
 	},
