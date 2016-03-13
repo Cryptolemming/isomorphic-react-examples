@@ -1,7 +1,7 @@
 var path = require("path");
 
 module.exports = {
-  entry: './components/app.js',
+  entry: './index.js',
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: "/",
@@ -10,11 +10,11 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['es2015', 'stage-0', 'react'],
         }
       }
     ]
